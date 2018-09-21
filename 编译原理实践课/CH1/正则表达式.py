@@ -2,12 +2,12 @@ import re
 
 
 def main():
-    # data = input("Please enter :")
+    data = input("Please enter :")
     # verifyFileName(data)
     # matchDate(data)
-    # matchPhoneNum(data)
+    matchPhoneNum(data)
     # readAndExtractHtmlLink("list.html")
-    readAndExtractHtmlPa("content.html")
+    #readAndExtractHtmlPa("content.html")
 
 
 # 测试文件名
@@ -67,10 +67,13 @@ def readAndExtractHtmlLink(infile):
 def readAndExtractHtmlPa(infile):
     infile = open(infile, "r", encoding="utf-8")  # 这里需要指定编码方式为utf-8，默认为gbk解码会出错
     htmlContent = infile.read()
+    prePattern = re.compile("<article.*>.*</article>",re.S)
     p1 = re.compile("<h.*>(.+)</h>")
     p2 = re.compile("<p>(.+)</p>")  # 如果正则表达式只有一个括号则默认匹配的结果就是括号内的
+    getAtl = prePattern.search(htmlContent).group()
+    print(getAtl, "\n")
     resLst1 = p1.findall(htmlContent)
-    resLst2 = p2.findall(htmlContent)
+    resLst2 = p2.findall(getAtl)
     print("Titles:")
     for content in resLst1:
         print(content, end=" ")
