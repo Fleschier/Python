@@ -13,9 +13,10 @@ import numpy as np
 
 def main():
     #showPieChart()
-    #showHistogram()
+    showHistogram()
     #showCoordinateMap() #still have parameter error
-    fig1 = showScatterPlot()
+    #fig1 = showScatterPlot()
+    fig1 = showHistogram()
     fig1.savefig("examples.jpg")
 
 
@@ -33,16 +34,23 @@ def showPieChart():
 
 #直方图
 def showHistogram():
-    np.random.seed(0) #每次生成的随机数都相同
-    avg, sigma = 100, 40
-    arr = np.random.normal(avg, sigma, size=1000)
+    #np.random.seed(0) #每次生成的随机数都相同
+    #avg, sigma = 100, 40
+    #arr = np.random.normal(avg, sigma, size=1000)
     # 给出均值为mean，标准差为stdev的高斯随机数（场），当size赋值时，例如：size=100，表示返回100个高斯随机数。
 
-    #testArr = [100,24,23,457,24,745,24,76,7564,345,35,234]
-    plt.hist(arr, 10, histtype='stepfilled', facecolor='b', alpha=0.75)
+    #testArr = [1500, 15.61666, 20.8, 100]
+    #plt.hist(testArr, 10, histtype='stepfilled', facecolor='b', alpha=0.75)
     #第一个参数是一个数组, 10是直方图的个数(就是柱体的个数,越多区间划分越细)
-    plt.title = ("Histogram_Test")     #设置标题
+
+    name_list = ['ripple', 'eth', 'steemit', 'iota']
+    num_list = [1500, 15.61666, 20.8, 100]
+    plt.bar(range(len(num_list)), num_list, color='rgb', tick_label=name_list)
+
+    plt.title = ("各个区块链tps比较")     #设置标题
+    fig1 = plt.gcf()
     plt.show()
+    return fig1
 
 #坐标图
 def showCoordinateMap():
@@ -54,7 +62,7 @@ def showCoordinateMap():
     ax = plt.subplot(111, projection='ploar')
     bars = ax.bar(theta, radii, width=width, bottom=0.0)
 
-    for r,bar in zip(radii, bars):
+    for r, bar in zip(radii, bars):
         bar.set_facecolor(plt.cm.viridis(r/10.))
         bar.set_alpha(0.5)
     plt.show()
