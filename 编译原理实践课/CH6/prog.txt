@@ -1,0 +1,8 @@
+int asd = 0;
+int bc = 10;
+if(bc - asd < 2){
+	asd = asd + 1;
+}else{
+	asd = asd - 2;
+}
+

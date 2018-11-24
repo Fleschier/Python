@@ -1,0 +1,16 @@
+﻿  NFA_to_DFA.cpp
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(144): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(145): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(159): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(170): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(178): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(188): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(204): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(212): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(269): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(270): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(281): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(301): warning C4018: “<”: 有符号/无符号不匹配
+d:\crs chen\computer programming\git storage\编译原理实践课\ch5\nfa转dfa\nfa转dfa\nfa_to_dfa.cpp(310): warning C4018: “<”: 有符号/无符号不匹配
+  NFA转DFA.vcxproj -> D:\Crs chen\Computer programming\Git Storage\编译原理实践课\CH5\NFA转DFA\Debug\NFA转DFA.exe
+  NFA转DFA.vcxproj -> D:\Crs chen\Computer programming\Git Storage\编译原理实践课\CH5\NFA转DFA\Debug\NFA转DFA.pdb (Partial PDB)
