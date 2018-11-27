@@ -129,11 +129,12 @@ intention = ['unvoted', 'reject', 'agree']
 
 def main():
     random.seed(time.time())
-    count = eval(input("Please enter the number of Transactions you want to generate: "))
-    for i in range(count):
-        startGenerate()
+    nums = eval(input("Please enter the number of Transactions you want to generate: "))
+    count = eval(input("please enter the number of items: "))
+    for i in range(nums):
+        startGenerate(count)
 
-def startGenerate():
+def startGenerate(count):
     new_dict1 = {}
     new_dict2 = {}
     new_dict3 = {}
@@ -152,7 +153,7 @@ def startGenerate():
     transportInfo = []
     machiningInfo = []
     saleInfo = {}
-    for i in range(2):
+    for i in range(count):
         weatherInfo.append({'date': genDate(),
                             'temperature': (str(genTemperature()) + " oC"),
                             'atmosphericPressure': (str(genAtmospheric()) + " atm"),
@@ -161,14 +162,14 @@ def startGenerate():
                             })
     new_dict1['infos']['weatherInfo'] = weatherInfo
 
-    for i in range(2):
+    for i in range(count):
         transportInfo.append({'from': genPlace(),
                               'to': genPlace(),
                               'time': (genDate() + ' ' + genTime())
                               })
     new_dict1['infos']['transportInfo'] = transportInfo
 
-    for i in range(2):
+    for i in range(count):
         machiningInfo.append({'place': genPlace(),
                                 'machining': ' '.join(genMachining()),
                                 'time': (genDate() + ' ' + genTime())
@@ -181,7 +182,7 @@ def startGenerate():
 
 #dict2
     dict2_lst = []
-    for i in range(2):
+    for i in range(count):
         dict2_lst.append({
             'productId': ID,
             'changeId': changeID,
@@ -223,7 +224,7 @@ def genPlace():
     return Privences[i]
 
 def genDate():
-    time.sleep(0.1)        #to generate different dates
+    #time.sleep(0.1)        #to generate different dates
     day = random.randint(1,29)
     month = random.randint(1,12)
     year = 2017 + random.randint(0,1)
@@ -244,10 +245,10 @@ def genModify():
     return Modified[idx]
 
 def genTemperature():
-    return 20 + round(random.uniform(-8, 5), 2)
+    return 20 + round(random.uniform(-8, 5), 1)
 
 def genAtmospheric():
-    return 1 + round(random.uniform(-0.2, 0.1),3)
+    return 1 + round(random.uniform(-0.2, 0.1),2)
 
 def genRelativeHumidity():
     return random.randint(30, 75)
