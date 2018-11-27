@@ -1,0 +1,77 @@
+// query-api  (post productId to you, get record like this)
+{
+    "productId": "xxxxxxxxx",
+    "productName": "xx",
+    "birthplace": "xxxxxx",
+    "modified": false,
+    "infos": {
+        "weatherInfo": [
+            {
+                "date": "dd-mm-yyyy",
+                "temperature": "xxxx",
+                "atmosphericPressure": "xxxxxxxxx",
+                "relativeHumidity": "xxxxxxx",
+                "evaporate": "xxxxx"
+            },...
+        ],
+        "transportInfo": [
+            {
+                "form": "onePlace",
+                "to": "anotherPlace",
+                "time": "dd-MM-yyyy hh:mm:ss"
+            },
+            {
+                "form": "onePlace",
+                "to": "anotherPlace",
+                "time": "dd-MM-yyyy hh:mm:ss"
+            }...
+        ],
+        "machiningInfo": [
+            {
+                "place": "xxxx",
+                "machining": "sssss",
+                "time": "dd-MM-yyyy hh:mm:ss"
+            },
+            ...
+        ],
+        "saleInfo": {
+            "location": "some supermarket",
+            "price": "xxx"
+        }
+    }
+}
+// query all change logs
+[
+    {
+        "productId": "XXXXXXX",
+        "changeId":"sssssss",
+        "status":"voting/closed",
+        "time":"dd-MM-yyyy hh:mm:ss",
+        "launcher":"gov/com/cit",
+        "intention":{
+            "gov":"unvoted/reject/agree",
+            "com":"unvoted/reject/agree",
+            "cit":"unvoted/reject/agree",
+        },
+        "reason": "xxxxxxx",
+        "solution":"sssssss"
+    },
+    ....
+]
+// create voting (post this to you)
+{
+    "productId":"ssss",
+    "launcher":"gov/com/cit",
+    "reason": "xxxxxxx",
+    "solution":"sssssss"
+}
+
+// this is a vote (post to you)
+{
+    "productId":"xxxxx",
+    "changeId":"ssssssss",
+    "org":"gov/cit/com",
+    "intention":"reject/agree"
+}
+
+
