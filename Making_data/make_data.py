@@ -285,10 +285,13 @@ def genIntention():
 
 def writeJson(ID, dict1, dict2, dict3, dict4):
     fout = open(ID + '.json', 'w')
-    json.dump(dict1, fout)
-    json.dump(dict2, fout)
-    json.dump(dict3, fout)
-    json.dump(dict4, fout)
+    finaldict = {}
+    finaldict['OneTranc'] = [dict1, dict2, dict3, dict4]
+    # json.dump(dict1, fout)
+    # json.dump(dict2, fout)
+    # json.dump(dict3, fout)
+    # json.dump(dict4, fout)
+    json.dump(finaldict, fout)
     fout.close()
 
 if __name__ == '__main__':
