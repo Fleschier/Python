@@ -16,13 +16,12 @@ reserved = {
 # List of token names.   This is always required
 tokens = [
     'NUMBER',
-    # 'PLUS',
-    # 'MINUS',
+    'PLUS',
+    'MINUS',
     'LPAREN',
     'RPAREN',
     'LBRACKET',
     'RBRACKET',
-    'END',
     'ASSIGN',
     'FEWER',
     'GREATER',
@@ -30,41 +29,26 @@ tokens = [
 ] + list(reserved.values())
 
 # Regular expression rules for simple tokens
-# t_PLUS    = r'\+'
-# t_MINUS   = r'-'
+t_PLUS    = r'\+'
+t_MINUS   = r'\-'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LBRACKET = r'\{'
 t_RBRACKET = r'\}'
-t_END = r'\;'
 t_ASSIGN = r'\='
 t_FEWER = r'\<'
 t_GREATER = r'\>'
 
-def t_IF(t):
-    r'if'
-    return t
-
-def t_ELSE(t):
-    r'else'
-    return t
-
-def t_INT(t):
-    r'int'
-    return t
-
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
-    #t.type = reserved.get(t.value, 'ID') #check reserved words
-    #look up symbol table information and return a tuple
-    #t.value = (t.value, symbol_lookup(t.value))
+    t.type = reserved.get(t.value, 'ID')
     return t
 
 #drop redundant
-def t_COMMENT(t):
-    r'\#.*'
-    pass
-    #return nothing Token discarded
+# def t_COMMENT(t):
+#     r'\#.*'
+#     pass
+#     #return nothing Token discarded
 
 # A regular expression rule with some action code
 def t_NUMBER(t):
@@ -78,7 +62,7 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 
 # A string containing ignored characters (spaces and tabs)
-t_ignore  = ' \t'
+t_ignore  = ' \t;'
 
 # Error handling rule
 def t_error(t):

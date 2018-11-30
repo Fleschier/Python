@@ -1,6 +1,5 @@
 import ply.yacc as yacc
 
-import ply.yacc as yacc
 from Calclex import tokens
 
 
@@ -28,92 +27,97 @@ from Calclex import tokens
 # )
 
 # 规约加减
-def p_expression(p):
-    '''expression : SID '+' factor
-                | SID '-' factor'''
-    if p[2] == '+':
-        p[0] = p[1] + p[3]
-    elif p[2] == '-':
-        p[0] = p[1] - p[3]
-
-# 最终规约到expression
-# one statement
-def p_state_match(p):
-    '''expression : expression END '''
-    p[0] = p[1]
+fin = open("prog.txt", "r")
+prog = fin.read()
+dic = dict()
 
 
-# 从赋值规约到数值-------
-# Assign value of int
+# 初始赋值规约
 def p_expr_assign(p):
-    '''SID : INT ID ASSIGN NUMBER
-                | ID ASSIGN expression
-    '''
-    if(len(p) == 5):
-        p[0] = p[4]
-    else:
-        p[0] = p[3]
+    'term : INT ID ASSIGN expression'
+    dic[p[2]] = p[4]
+    p[0] = 0
 
+# 赋值规约
+def p_expression_assign(p):
+    'expression : ID ASSIGN expression'
+    p[0] = p[3]
 
-def p_expre_factor(p):
-    'expression : factor'
-    p[0] = p[1]
-
-
+# 数值规约
 def p_factor_num(p):
-    'factor : NUMBER'
+    'expression : NUMBER'
     p[0] = p[1]
 
-def p_factor_ID(p):
-    'factor : SID'
-    p[0] = p[1]
-
-#---------------------
-
+# ID规约
+def p_expression_ID(p):
+    'expression : ID'
+    p[0] = dic[p[1]]
 
 # if比较--------------------
-def p_compare(p):
-    '''BOOL : expression GREATER NUMBER
-                | expression FEWER NUMBER'''
-    if(p[2] == '>'):
-        if(eval(p[1]) > eval(p[3])): p[0] = True
-        else: p[0] = False
-    elif(p[2] == '<'):
-        if(eval(p[1]) < eval(p[3])): p[0] = True
-        else: p[0] = False
+# 逻辑大于
+def p_greater(p):
+    'expression : expression GREATER expression'
+    if(p[1] > p[3]): p[0] = True
+    else: p[0] = False
 
+# 逻辑小于
+def p_smaller(p):
+    'expression : expression FEWER expression'
+    if(p[1] < p[3]): p[0] = True
+    else: p[0] = False
 
-def p_factor_expr(p):
-    'judge : LPAREN BOOL RPAREN'
+# 小括号
+def p_paren_expr(p):
+    'judge : LPAREN expression RPAREN'
     p[0] = p[2]
 
 
-def p_logic_judge(p):
-    'expression : IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET '
-    if(p[2] == True):
-        p[0] = p[4]
-    else: p[0] = p[8]
-    #p[0] = p[8]
-#-----------------------------
+# 大括号
+def p_bracket_expr(p):
+    'brkt : LBRACKET expression RBRACKET'
+    p[0] = p[2]
 
+# 逻辑判断
+def p_logic_judge(p):
+    'term : IF judge brkt ELSE brkt '
+    if(p[2]):
+        p[0] = p[3]
+    else:
+        p[0] = p[5]
+
+# 加法
+def p_expression_plus(p):
+    'expression : expression PLUS expression'
+    p[0] = p[1] + p[3]
+
+# 减法
+def p_expression_minus(p):
+    'expression : expression MINUS expression'
+    p[0] = p[1] - p[3]
+
+# 规约合并
+def p_merge(p):
+    'term : term term'
+    p[0] = p[1] + p[2]
+
+
+precedence = (
+    ('right', 'IF', 'ELSE'),
+    ('left', 'PLUS', 'MINUS'),
+    ('right', 'INT'),
+)
 
 
 # Error rule for syntax errors
 def p_error(p):
-    #p.lexer.skip(1) #跳过一个字符
-    print("Syntax error in input!")
+    print("ERROR: '{}'".format(p.value))
 
 
 
 # Build the parser
 parser = yacc.yacc()
 
-prog = '''int asd = 0;
-int bc = 10;
-if(bc - asd < 2){
-	asd = asd + 1;
-}else{
-	asd = asd - 2;
-}'''
 result = parser.parse(prog)
-print(result)
+print()
+print("The result is : ", result)
+fin.close()
