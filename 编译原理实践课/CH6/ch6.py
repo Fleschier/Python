@@ -29,8 +29,8 @@ from Calclex import tokens
 
 # 规约加减
 def p_expression(p):
-    '''term : factor PLUS factor
-                | factor MINUS factor'''
+    '''expression : SID '+' factor
+                | SID '-' factor'''
     if p[2] == '+':
         p[0] = p[1] + p[3]
     elif p[2] == '-':
@@ -39,36 +39,36 @@ def p_expression(p):
 # 最终规约到expression
 # one statement
 def p_state_match(p):
-    'term : term END'
+    '''expression : expression END '''
     p[0] = p[1]
 
 
 # 从赋值规约到数值-------
 # Assign value of int
 def p_expr_assign(p):
-    'term : ID ID ASSIGN factor'
-    p[0] = p[4]
+    '''SID : INT ID ASSIGN NUMBER
+                | ID ASSIGN expression
+    '''
+    if(len(p) == 5):
+        p[0] = p[4]
+    else:
+        p[0] = p[3]
 
 
-def p_expression_term(p):
-    'expression : term'
-    p[0] = p[1]
-
-
-def p_term_factor(p):
-    'term : factor'
+def p_expre_factor(p):
+    'expression : factor'
     p[0] = p[1]
 
 
 def p_factor_num(p):
     'factor : NUMBER'
     p[0] = p[1]
+
+def p_factor_ID(p):
+    'factor : SID'
+    p[0] = p[1]
+
 #---------------------
-
-
-def p_assign_assign(p):
-    'expression : ID ASSIGN NUMBER'
-    p[0] = p[3]
 
 
 # if比较--------------------
@@ -84,19 +84,16 @@ def p_compare(p):
 
 
 def p_factor_expr(p):
-    'BOOLs : LPAREN BOOL RPAREN'
+    'judge : LPAREN BOOL RPAREN'
     p[0] = p[2]
 
-def p_BOOL_fac(p):
-    'factor : BOOLs'
-    p[0] = p[1]
 
 def p_logic_judge(p):
-    'term : IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET '
-    # if(p[2] == True):
-    #     p[0] = p[4]
-    # else: p[0] = p[8]
-    p[0] = p[8]
+    'expression : IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET '
+    if(p[2] == True):
+        p[0] = p[4]
+    else: p[0] = p[8]
+    #p[0] = p[8]
 #-----------------------------
 
 
@@ -111,7 +108,6 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc()
 
-# s = '1+2*3-4'
 prog = '''int asd = 0;
 int bc = 10;
 if(bc - asd < 2){

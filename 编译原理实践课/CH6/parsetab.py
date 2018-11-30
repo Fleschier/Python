@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ASSIGN ELSE END FEWER GREATER ID IF LBRACKET LPAREN MINUS NUMBER PLUS RBRACKET RPARENterm : factor PLUS factor\n                | factor MINUS factorterm : term ENDterm : ID ID ASSIGN factorexpression : termterm : factorfactor : NUMBERexpression : ID ASSIGN NUMBERBOOL : expression GREATER NUMBER\n                | expression FEWER NUMBERBOOLs : LPAREN BOOL RPARENfactor : BOOLsterm : IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET '
+_lr_signature = "ASSIGN ELSE END FEWER GREATER ID IF INT LBRACKET LPAREN NUMBER RBRACKET RPARENexpression : SID '+' factor\n                | SID '-' factorexpression : expression END SID : INT ID ASSIGN NUMBER\n                | ID ASSIGN expression\n    expression : factorfactor : NUMBERfactor : SIDBOOL : expression GREATER NUMBER\n                | expression FEWER NUMBERjudge : LPAREN BOOL RPARENexpression : IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET "
     
-_lr_action_items = {'ID':([0,3,4,7,14,20,32,],[3,11,14,14,11,14,14,]),'IF':([0,4,7,20,32,],[4,4,4,4,4,]),'NUMBER':([0,4,7,9,10,19,20,21,23,24,32,],[5,5,5,5,5,5,5,27,28,29,5,]),'LPAREN':([0,4,7,9,10,19,20,32,],[7,7,7,7,7,7,7,7,]),'$end':([1,2,5,6,8,17,18,22,25,34,],[0,-6,-7,-12,-3,-1,-2,-11,-4,-13,]),'END':([1,2,5,6,8,13,17,18,22,25,34,],[8,-6,-7,-12,-3,8,-1,-2,-11,-4,-13,]),'PLUS':([2,5,6,22,],[9,-7,-12,-11,]),'MINUS':([2,5,6,22,],[10,-7,-12,-11,]),'LBRACKET':([2,5,6,8,12,13,17,18,22,25,27,31,34,],[-6,-7,-12,-3,20,-5,-1,-2,-11,-4,-8,32,-13,]),'GREATER':([2,5,6,8,13,16,17,18,22,25,27,34,],[-6,-7,-12,-3,-5,23,-1,-2,-11,-4,-8,-13,]),'FEWER':([2,5,6,8,13,16,17,18,22,25,27,34,],[-6,-7,-12,-3,-5,24,-1,-2,-11,-4,-8,-13,]),'RBRACKET':([2,5,6,8,13,17,18,22,25,26,27,33,34,],[-6,-7,-12,-3,-5,-1,-2,-11,-4,30,-8,34,-13,]),'ASSIGN':([11,14,],[19,21,]),'RPAREN':([15,28,29,],[22,-9,-10,]),'ELSE':([30,],[31,]),}
+_lr_action_items = {'IF':([0,12,14,18,32,],[4,4,4,4,4,]),'INT':([0,9,10,12,14,18,32,],[5,5,5,5,5,5,5,]),'ID':([0,5,9,10,12,14,18,32,],[6,13,6,6,6,6,6,6,]),'NUMBER':([0,9,10,12,14,18,21,25,26,32,],[7,7,7,7,7,7,27,29,30,7,]),'$end':([1,2,3,7,8,15,16,17,22,27,34,],[0,-8,-6,-7,-3,-8,-1,-2,-5,-4,-12,]),'END':([1,2,3,7,8,15,16,17,20,22,23,27,33,34,],[8,-8,-6,-7,-3,-8,-1,-2,8,8,8,-4,8,-12,]),'+':([2,3,7,8,15,16,17,22,27,34,],[9,-6,-7,-3,-8,-1,-2,-5,-4,-12,]),'-':([2,3,7,8,15,16,17,22,27,34,],[10,-6,-7,-3,-8,-1,-2,-5,-4,-12,]),'GREATER':([2,3,7,8,15,16,17,20,22,27,34,],[-8,-6,-7,-3,-8,-1,-2,25,-5,-4,-12,]),'FEWER':([2,3,7,8,15,16,17,20,22,27,34,],[-8,-6,-7,-3,-8,-1,-2,26,-5,-4,-12,]),'RBRACKET':([2,3,7,8,15,16,17,22,23,27,33,34,],[-8,-6,-7,-3,-8,-1,-2,-5,28,-4,34,-12,]),'LPAREN':([4,],[12,]),'ASSIGN':([6,13,],[14,21,]),'LBRACKET':([11,24,31,],[18,-11,32,]),'RPAREN':([19,29,30,],[24,-9,-10,]),'ELSE':([28,],[31,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'term':([0,4,7,20,32,],[1,13,13,13,13,]),'factor':([0,4,7,9,10,19,20,32,],[2,2,2,17,18,25,2,2,]),'BOOLs':([0,4,7,9,10,19,20,32,],[6,6,6,6,6,6,6,6,]),'expression':([4,7,20,32,],[12,16,26,33,]),'BOOL':([7,],[15,]),}
+_lr_goto_items = {'expression':([0,12,14,18,32,],[1,20,22,23,33,]),'SID':([0,9,10,12,14,18,32,],[2,15,15,2,2,2,2,]),'factor':([0,9,10,12,14,18,32,],[3,16,17,3,3,3,3,]),'judge':([4,],[11,]),'BOOL':([12,],[19,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,18 +26,17 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> term","S'",1,None,None,None),
-  ('term -> factor PLUS factor','term',3,'p_expression','ch6.py',32),
-  ('term -> factor MINUS factor','term',3,'p_expression','ch6.py',33),
-  ('term -> term END','term',2,'p_state_match','ch6.py',42),
-  ('term -> ID ID ASSIGN factor','term',4,'p_expr_assign','ch6.py',49),
-  ('expression -> term','expression',1,'p_expression_term','ch6.py',54),
-  ('term -> factor','term',1,'p_term_factor','ch6.py',59),
+  ("S' -> expression","S'",1,None,None,None),
+  ('expression -> SID + factor','expression',3,'p_expression','ch6.py',32),
+  ('expression -> SID - factor','expression',3,'p_expression','ch6.py',33),
+  ('expression -> expression END','expression',2,'p_state_match','ch6.py',42),
+  ('SID -> INT ID ASSIGN NUMBER','SID',4,'p_expr_assign','ch6.py',49),
+  ('SID -> ID ASSIGN expression','SID',3,'p_expr_assign','ch6.py',50),
+  ('expression -> factor','expression',1,'p_expre_factor','ch6.py',59),
   ('factor -> NUMBER','factor',1,'p_factor_num','ch6.py',64),
-  ('expression -> ID ASSIGN NUMBER','expression',3,'p_assign_assign','ch6.py',70),
+  ('factor -> SID','factor',1,'p_factor_ID','ch6.py',68),
   ('BOOL -> expression GREATER NUMBER','BOOL',3,'p_compare','ch6.py',76),
   ('BOOL -> expression FEWER NUMBER','BOOL',3,'p_compare','ch6.py',77),
-  ('BOOLs -> LPAREN BOOL RPAREN','BOOLs',3,'p_factor_expr','ch6.py',87),
-  ('factor -> BOOLs','factor',1,'p_BOOL_fac','ch6.py',91),
-  ('term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET','term',9,'p_logic_judge','ch6.py',95),
+  ('judge -> LPAREN BOOL RPAREN','judge',3,'p_factor_expr','ch6.py',87),
+  ('expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET','expression',9,'p_logic_judge','ch6.py',92),
 ]

@@ -2,466 +2,472 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Grammar
 
-Rule 0     S' -> term
-Rule 1     term -> factor PLUS factor
-Rule 2     term -> factor MINUS factor
-Rule 3     term -> term END
-Rule 4     term -> ID ID ASSIGN factor
-Rule 5     expression -> term
-Rule 6     term -> factor
+Rule 0     S' -> expression
+Rule 1     expression -> SID + factor
+Rule 2     expression -> SID - factor
+Rule 3     expression -> expression END
+Rule 4     SID -> INT ID ASSIGN NUMBER
+Rule 5     SID -> ID ASSIGN expression
+Rule 6     expression -> factor
 Rule 7     factor -> NUMBER
-Rule 8     expression -> ID ASSIGN NUMBER
+Rule 8     factor -> SID
 Rule 9     BOOL -> expression GREATER NUMBER
 Rule 10    BOOL -> expression FEWER NUMBER
-Rule 11    BOOLs -> LPAREN BOOL RPAREN
-Rule 12    factor -> BOOLs
-Rule 13    term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+Rule 11    judge -> LPAREN BOOL RPAREN
+Rule 12    expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
 
 Terminals, with rules where they appear
 
-ASSIGN               : 4 8
-ELSE                 : 13
++                    : 1
+-                    : 2
+ASSIGN               : 4 5
+ELSE                 : 12
 END                  : 3
 FEWER                : 10
 GREATER              : 9
-ID                   : 4 4 8
-IF                   : 13
-LBRACKET             : 13 13
+ID                   : 4 5
+IF                   : 12
+INT                  : 4
+LBRACKET             : 12 12
 LPAREN               : 11
-MINUS                : 2
-NUMBER               : 7 8 9 10
-PLUS                 : 1
-RBRACKET             : 13 13
+NUMBER               : 4 7 9 10
+RBRACKET             : 12 12
 RPAREN               : 11
 error                : 
 
 Nonterminals, with rules where they appear
 
 BOOL                 : 11
-BOOLs                : 12
-expression           : 9 10 13 13 13
-factor               : 1 1 2 2 4 6
-term                 : 3 5 0
+SID                  : 1 2 8
+expression           : 3 5 9 10 12 12 0
+factor               : 1 2 6
+judge                : 12
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . term
-    (1) term -> . factor PLUS factor
-    (2) term -> . factor MINUS factor
-    (3) term -> . term END
-    (4) term -> . ID ID ASSIGN factor
-    (6) term -> . factor
-    (13) term -> . IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (0) S' -> . expression
+    (1) expression -> . SID + factor
+    (2) expression -> . SID - factor
+    (3) expression -> . expression END
+    (6) expression -> . factor
+    (12) expression -> . IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
     (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (8) factor -> . SID
 
-    ID              shift and go to state 3
     IF              shift and go to state 4
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    INT             shift and go to state 5
+    ID              shift and go to state 6
+    NUMBER          shift and go to state 7
 
-    term                           shift and go to state 1
-    factor                         shift and go to state 2
-    BOOLs                          shift and go to state 6
+    expression                     shift and go to state 1
+    SID                            shift and go to state 2
+    factor                         shift and go to state 3
 
 state 1
 
-    (0) S' -> term .
-    (3) term -> term . END
+    (0) S' -> expression .
+    (3) expression -> expression . END
 
     END             shift and go to state 8
 
 
 state 2
 
-    (1) term -> factor . PLUS factor
-    (2) term -> factor . MINUS factor
-    (6) term -> factor .
+    (1) expression -> SID . + factor
+    (2) expression -> SID . - factor
+    (8) factor -> SID .
 
-    PLUS            shift and go to state 9
-    MINUS           shift and go to state 10
-    END             reduce using rule 6 (term -> factor .)
-    $end            reduce using rule 6 (term -> factor .)
-    LBRACKET        reduce using rule 6 (term -> factor .)
-    GREATER         reduce using rule 6 (term -> factor .)
-    FEWER           reduce using rule 6 (term -> factor .)
-    RBRACKET        reduce using rule 6 (term -> factor .)
+  ! shift/reduce conflict for + resolved as shift
+  ! shift/reduce conflict for - resolved as shift
+    +               shift and go to state 9
+    -               shift and go to state 10
+    END             reduce using rule 8 (factor -> SID .)
+    $end            reduce using rule 8 (factor -> SID .)
+    GREATER         reduce using rule 8 (factor -> SID .)
+    FEWER           reduce using rule 8 (factor -> SID .)
+    RBRACKET        reduce using rule 8 (factor -> SID .)
+
+  ! +               [ reduce using rule 8 (factor -> SID .) ]
+  ! -               [ reduce using rule 8 (factor -> SID .) ]
 
 
 state 3
 
-    (4) term -> ID . ID ASSIGN factor
+    (6) expression -> factor .
 
-    ID              shift and go to state 11
+    END             reduce using rule 6 (expression -> factor .)
+    $end            reduce using rule 6 (expression -> factor .)
+    GREATER         reduce using rule 6 (expression -> factor .)
+    FEWER           reduce using rule 6 (expression -> factor .)
+    +               reduce using rule 6 (expression -> factor .)
+    -               reduce using rule 6 (expression -> factor .)
+    RBRACKET        reduce using rule 6 (expression -> factor .)
 
 
 state 4
 
-    (13) term -> IF . expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
-    (5) expression -> . term
-    (8) expression -> . ID ASSIGN NUMBER
-    (1) term -> . factor PLUS factor
-    (2) term -> . factor MINUS factor
-    (3) term -> . term END
-    (4) term -> . ID ID ASSIGN factor
-    (6) term -> . factor
-    (13) term -> . IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
-    (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (12) expression -> IF . judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (11) judge -> . LPAREN BOOL RPAREN
 
-    ID              shift and go to state 14
-    IF              shift and go to state 4
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    LPAREN          shift and go to state 12
 
-    expression                     shift and go to state 12
-    term                           shift and go to state 13
-    factor                         shift and go to state 2
-    BOOLs                          shift and go to state 6
+    judge                          shift and go to state 11
 
 state 5
 
-    (7) factor -> NUMBER .
+    (4) SID -> INT . ID ASSIGN NUMBER
 
-    PLUS            reduce using rule 7 (factor -> NUMBER .)
-    MINUS           reduce using rule 7 (factor -> NUMBER .)
-    END             reduce using rule 7 (factor -> NUMBER .)
-    $end            reduce using rule 7 (factor -> NUMBER .)
-    LBRACKET        reduce using rule 7 (factor -> NUMBER .)
-    GREATER         reduce using rule 7 (factor -> NUMBER .)
-    FEWER           reduce using rule 7 (factor -> NUMBER .)
-    RBRACKET        reduce using rule 7 (factor -> NUMBER .)
+    ID              shift and go to state 13
 
 
 state 6
 
-    (12) factor -> BOOLs .
+    (5) SID -> ID . ASSIGN expression
 
-    PLUS            reduce using rule 12 (factor -> BOOLs .)
-    MINUS           reduce using rule 12 (factor -> BOOLs .)
-    END             reduce using rule 12 (factor -> BOOLs .)
-    $end            reduce using rule 12 (factor -> BOOLs .)
-    LBRACKET        reduce using rule 12 (factor -> BOOLs .)
-    GREATER         reduce using rule 12 (factor -> BOOLs .)
-    FEWER           reduce using rule 12 (factor -> BOOLs .)
-    RBRACKET        reduce using rule 12 (factor -> BOOLs .)
+    ASSIGN          shift and go to state 14
 
 
 state 7
 
-    (11) BOOLs -> LPAREN . BOOL RPAREN
-    (9) BOOL -> . expression GREATER NUMBER
-    (10) BOOL -> . expression FEWER NUMBER
-    (5) expression -> . term
-    (8) expression -> . ID ASSIGN NUMBER
-    (1) term -> . factor PLUS factor
-    (2) term -> . factor MINUS factor
-    (3) term -> . term END
-    (4) term -> . ID ID ASSIGN factor
-    (6) term -> . factor
-    (13) term -> . IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
-    (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (7) factor -> NUMBER .
 
-    ID              shift and go to state 14
-    IF              shift and go to state 4
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    END             reduce using rule 7 (factor -> NUMBER .)
+    $end            reduce using rule 7 (factor -> NUMBER .)
+    GREATER         reduce using rule 7 (factor -> NUMBER .)
+    FEWER           reduce using rule 7 (factor -> NUMBER .)
+    +               reduce using rule 7 (factor -> NUMBER .)
+    -               reduce using rule 7 (factor -> NUMBER .)
+    RBRACKET        reduce using rule 7 (factor -> NUMBER .)
 
-    BOOL                           shift and go to state 15
-    expression                     shift and go to state 16
-    term                           shift and go to state 13
-    factor                         shift and go to state 2
-    BOOLs                          shift and go to state 6
 
 state 8
 
-    (3) term -> term END .
+    (3) expression -> expression END .
 
-    END             reduce using rule 3 (term -> term END .)
-    $end            reduce using rule 3 (term -> term END .)
-    LBRACKET        reduce using rule 3 (term -> term END .)
-    GREATER         reduce using rule 3 (term -> term END .)
-    FEWER           reduce using rule 3 (term -> term END .)
-    RBRACKET        reduce using rule 3 (term -> term END .)
+    END             reduce using rule 3 (expression -> expression END .)
+    $end            reduce using rule 3 (expression -> expression END .)
+    GREATER         reduce using rule 3 (expression -> expression END .)
+    FEWER           reduce using rule 3 (expression -> expression END .)
+    +               reduce using rule 3 (expression -> expression END .)
+    -               reduce using rule 3 (expression -> expression END .)
+    RBRACKET        reduce using rule 3 (expression -> expression END .)
 
 
 state 9
 
-    (1) term -> factor PLUS . factor
+    (1) expression -> SID + . factor
     (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (8) factor -> . SID
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
 
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 7
+    INT             shift and go to state 5
+    ID              shift and go to state 6
 
-    factor                         shift and go to state 17
-    BOOLs                          shift and go to state 6
+    SID                            shift and go to state 15
+    factor                         shift and go to state 16
 
 state 10
 
-    (2) term -> factor MINUS . factor
+    (2) expression -> SID - . factor
     (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (8) factor -> . SID
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
 
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 7
+    INT             shift and go to state 5
+    ID              shift and go to state 6
 
-    factor                         shift and go to state 18
-    BOOLs                          shift and go to state 6
+    SID                            shift and go to state 15
+    factor                         shift and go to state 17
 
 state 11
 
-    (4) term -> ID ID . ASSIGN factor
+    (12) expression -> IF judge . LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
 
-    ASSIGN          shift and go to state 19
+    LBRACKET        shift and go to state 18
 
 
 state 12
 
-    (13) term -> IF expression . LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (11) judge -> LPAREN . BOOL RPAREN
+    (9) BOOL -> . expression GREATER NUMBER
+    (10) BOOL -> . expression FEWER NUMBER
+    (1) expression -> . SID + factor
+    (2) expression -> . SID - factor
+    (3) expression -> . expression END
+    (6) expression -> . factor
+    (12) expression -> . IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
+    (7) factor -> . NUMBER
+    (8) factor -> . SID
 
-    LBRACKET        shift and go to state 20
+    IF              shift and go to state 4
+    INT             shift and go to state 5
+    ID              shift and go to state 6
+    NUMBER          shift and go to state 7
 
+    BOOL                           shift and go to state 19
+    expression                     shift and go to state 20
+    SID                            shift and go to state 2
+    factor                         shift and go to state 3
 
 state 13
 
-    (5) expression -> term .
-    (3) term -> term . END
+    (4) SID -> INT ID . ASSIGN NUMBER
 
-    LBRACKET        reduce using rule 5 (expression -> term .)
-    GREATER         reduce using rule 5 (expression -> term .)
-    FEWER           reduce using rule 5 (expression -> term .)
-    RBRACKET        reduce using rule 5 (expression -> term .)
-    END             shift and go to state 8
+    ASSIGN          shift and go to state 21
 
 
 state 14
 
-    (8) expression -> ID . ASSIGN NUMBER
-    (4) term -> ID . ID ASSIGN factor
+    (5) SID -> ID ASSIGN . expression
+    (1) expression -> . SID + factor
+    (2) expression -> . SID - factor
+    (3) expression -> . expression END
+    (6) expression -> . factor
+    (12) expression -> . IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
+    (7) factor -> . NUMBER
+    (8) factor -> . SID
 
-    ASSIGN          shift and go to state 21
-    ID              shift and go to state 11
+    IF              shift and go to state 4
+    INT             shift and go to state 5
+    ID              shift and go to state 6
+    NUMBER          shift and go to state 7
 
+    expression                     shift and go to state 22
+    SID                            shift and go to state 2
+    factor                         shift and go to state 3
 
 state 15
 
-    (11) BOOLs -> LPAREN BOOL . RPAREN
+    (8) factor -> SID .
 
-    RPAREN          shift and go to state 22
+    END             reduce using rule 8 (factor -> SID .)
+    $end            reduce using rule 8 (factor -> SID .)
+    GREATER         reduce using rule 8 (factor -> SID .)
+    FEWER           reduce using rule 8 (factor -> SID .)
+    +               reduce using rule 8 (factor -> SID .)
+    -               reduce using rule 8 (factor -> SID .)
+    RBRACKET        reduce using rule 8 (factor -> SID .)
 
 
 state 16
 
-    (9) BOOL -> expression . GREATER NUMBER
-    (10) BOOL -> expression . FEWER NUMBER
+    (1) expression -> SID + factor .
 
-    GREATER         shift and go to state 23
-    FEWER           shift and go to state 24
+    END             reduce using rule 1 (expression -> SID + factor .)
+    $end            reduce using rule 1 (expression -> SID + factor .)
+    GREATER         reduce using rule 1 (expression -> SID + factor .)
+    FEWER           reduce using rule 1 (expression -> SID + factor .)
+    +               reduce using rule 1 (expression -> SID + factor .)
+    -               reduce using rule 1 (expression -> SID + factor .)
+    RBRACKET        reduce using rule 1 (expression -> SID + factor .)
 
 
 state 17
 
-    (1) term -> factor PLUS factor .
+    (2) expression -> SID - factor .
 
-    END             reduce using rule 1 (term -> factor PLUS factor .)
-    $end            reduce using rule 1 (term -> factor PLUS factor .)
-    LBRACKET        reduce using rule 1 (term -> factor PLUS factor .)
-    GREATER         reduce using rule 1 (term -> factor PLUS factor .)
-    FEWER           reduce using rule 1 (term -> factor PLUS factor .)
-    RBRACKET        reduce using rule 1 (term -> factor PLUS factor .)
+    END             reduce using rule 2 (expression -> SID - factor .)
+    $end            reduce using rule 2 (expression -> SID - factor .)
+    GREATER         reduce using rule 2 (expression -> SID - factor .)
+    FEWER           reduce using rule 2 (expression -> SID - factor .)
+    +               reduce using rule 2 (expression -> SID - factor .)
+    -               reduce using rule 2 (expression -> SID - factor .)
+    RBRACKET        reduce using rule 2 (expression -> SID - factor .)
 
 
 state 18
 
-    (2) term -> factor MINUS factor .
+    (12) expression -> IF judge LBRACKET . expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (1) expression -> . SID + factor
+    (2) expression -> . SID - factor
+    (3) expression -> . expression END
+    (6) expression -> . factor
+    (12) expression -> . IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
+    (7) factor -> . NUMBER
+    (8) factor -> . SID
 
-    END             reduce using rule 2 (term -> factor MINUS factor .)
-    $end            reduce using rule 2 (term -> factor MINUS factor .)
-    LBRACKET        reduce using rule 2 (term -> factor MINUS factor .)
-    GREATER         reduce using rule 2 (term -> factor MINUS factor .)
-    FEWER           reduce using rule 2 (term -> factor MINUS factor .)
-    RBRACKET        reduce using rule 2 (term -> factor MINUS factor .)
+    IF              shift and go to state 4
+    INT             shift and go to state 5
+    ID              shift and go to state 6
+    NUMBER          shift and go to state 7
 
+    expression                     shift and go to state 23
+    SID                            shift and go to state 2
+    factor                         shift and go to state 3
 
 state 19
 
-    (4) term -> ID ID ASSIGN . factor
-    (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (11) judge -> LPAREN BOOL . RPAREN
 
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    RPAREN          shift and go to state 24
 
-    factor                         shift and go to state 25
-    BOOLs                          shift and go to state 6
 
 state 20
 
-    (13) term -> IF expression LBRACKET . expression RBRACKET ELSE LBRACKET expression RBRACKET
-    (5) expression -> . term
-    (8) expression -> . ID ASSIGN NUMBER
-    (1) term -> . factor PLUS factor
-    (2) term -> . factor MINUS factor
-    (3) term -> . term END
-    (4) term -> . ID ID ASSIGN factor
-    (6) term -> . factor
-    (13) term -> . IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
-    (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (9) BOOL -> expression . GREATER NUMBER
+    (10) BOOL -> expression . FEWER NUMBER
+    (3) expression -> expression . END
 
-    ID              shift and go to state 14
-    IF              shift and go to state 4
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    GREATER         shift and go to state 25
+    FEWER           shift and go to state 26
+    END             shift and go to state 8
 
-    expression                     shift and go to state 26
-    term                           shift and go to state 13
-    factor                         shift and go to state 2
-    BOOLs                          shift and go to state 6
 
 state 21
 
-    (8) expression -> ID ASSIGN . NUMBER
+    (4) SID -> INT ID ASSIGN . NUMBER
 
     NUMBER          shift and go to state 27
 
 
 state 22
 
-    (11) BOOLs -> LPAREN BOOL RPAREN .
+    (5) SID -> ID ASSIGN expression .
+    (3) expression -> expression . END
 
-    PLUS            reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    MINUS           reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    END             reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    $end            reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    LBRACKET        reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    GREATER         reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    FEWER           reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
-    RBRACKET        reduce using rule 11 (BOOLs -> LPAREN BOOL RPAREN .)
+  ! shift/reduce conflict for END resolved as shift
+    +               reduce using rule 5 (SID -> ID ASSIGN expression .)
+    -               reduce using rule 5 (SID -> ID ASSIGN expression .)
+    $end            reduce using rule 5 (SID -> ID ASSIGN expression .)
+    GREATER         reduce using rule 5 (SID -> ID ASSIGN expression .)
+    FEWER           reduce using rule 5 (SID -> ID ASSIGN expression .)
+    RBRACKET        reduce using rule 5 (SID -> ID ASSIGN expression .)
+    END             shift and go to state 8
+
+  ! END             [ reduce using rule 5 (SID -> ID ASSIGN expression .) ]
 
 
 state 23
 
-    (9) BOOL -> expression GREATER . NUMBER
+    (12) expression -> IF judge LBRACKET expression . RBRACKET ELSE LBRACKET expression RBRACKET
+    (3) expression -> expression . END
 
-    NUMBER          shift and go to state 28
+    RBRACKET        shift and go to state 28
+    END             shift and go to state 8
 
 
 state 24
 
-    (10) BOOL -> expression FEWER . NUMBER
+    (11) judge -> LPAREN BOOL RPAREN .
 
-    NUMBER          shift and go to state 29
+    LBRACKET        reduce using rule 11 (judge -> LPAREN BOOL RPAREN .)
 
 
 state 25
 
-    (4) term -> ID ID ASSIGN factor .
+    (9) BOOL -> expression GREATER . NUMBER
 
-    END             reduce using rule 4 (term -> ID ID ASSIGN factor .)
-    $end            reduce using rule 4 (term -> ID ID ASSIGN factor .)
-    LBRACKET        reduce using rule 4 (term -> ID ID ASSIGN factor .)
-    GREATER         reduce using rule 4 (term -> ID ID ASSIGN factor .)
-    FEWER           reduce using rule 4 (term -> ID ID ASSIGN factor .)
-    RBRACKET        reduce using rule 4 (term -> ID ID ASSIGN factor .)
+    NUMBER          shift and go to state 29
 
 
 state 26
 
-    (13) term -> IF expression LBRACKET expression . RBRACKET ELSE LBRACKET expression RBRACKET
+    (10) BOOL -> expression FEWER . NUMBER
 
-    RBRACKET        shift and go to state 30
+    NUMBER          shift and go to state 30
 
 
 state 27
 
-    (8) expression -> ID ASSIGN NUMBER .
+    (4) SID -> INT ID ASSIGN NUMBER .
 
-    LBRACKET        reduce using rule 8 (expression -> ID ASSIGN NUMBER .)
-    GREATER         reduce using rule 8 (expression -> ID ASSIGN NUMBER .)
-    FEWER           reduce using rule 8 (expression -> ID ASSIGN NUMBER .)
-    RBRACKET        reduce using rule 8 (expression -> ID ASSIGN NUMBER .)
+    +               reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
+    -               reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
+    END             reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
+    $end            reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
+    GREATER         reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
+    FEWER           reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
+    RBRACKET        reduce using rule 4 (SID -> INT ID ASSIGN NUMBER .)
 
 
 state 28
+
+    (12) expression -> IF judge LBRACKET expression RBRACKET . ELSE LBRACKET expression RBRACKET
+
+    ELSE            shift and go to state 31
+
+
+state 29
 
     (9) BOOL -> expression GREATER NUMBER .
 
     RPAREN          reduce using rule 9 (BOOL -> expression GREATER NUMBER .)
 
 
-state 29
+state 30
 
     (10) BOOL -> expression FEWER NUMBER .
 
     RPAREN          reduce using rule 10 (BOOL -> expression FEWER NUMBER .)
 
 
-state 30
-
-    (13) term -> IF expression LBRACKET expression RBRACKET . ELSE LBRACKET expression RBRACKET
-
-    ELSE            shift and go to state 31
-
-
 state 31
 
-    (13) term -> IF expression LBRACKET expression RBRACKET ELSE . LBRACKET expression RBRACKET
+    (12) expression -> IF judge LBRACKET expression RBRACKET ELSE . LBRACKET expression RBRACKET
 
     LBRACKET        shift and go to state 32
 
 
 state 32
 
-    (13) term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET . expression RBRACKET
-    (5) expression -> . term
-    (8) expression -> . ID ASSIGN NUMBER
-    (1) term -> . factor PLUS factor
-    (2) term -> . factor MINUS factor
-    (3) term -> . term END
-    (4) term -> . ID ID ASSIGN factor
-    (6) term -> . factor
-    (13) term -> . IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (12) expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET . expression RBRACKET
+    (1) expression -> . SID + factor
+    (2) expression -> . SID - factor
+    (3) expression -> . expression END
+    (6) expression -> . factor
+    (12) expression -> . IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET
+    (4) SID -> . INT ID ASSIGN NUMBER
+    (5) SID -> . ID ASSIGN expression
     (7) factor -> . NUMBER
-    (12) factor -> . BOOLs
-    (11) BOOLs -> . LPAREN BOOL RPAREN
+    (8) factor -> . SID
 
-    ID              shift and go to state 14
     IF              shift and go to state 4
-    NUMBER          shift and go to state 5
-    LPAREN          shift and go to state 7
+    INT             shift and go to state 5
+    ID              shift and go to state 6
+    NUMBER          shift and go to state 7
 
     expression                     shift and go to state 33
-    term                           shift and go to state 13
-    factor                         shift and go to state 2
-    BOOLs                          shift and go to state 6
+    SID                            shift and go to state 2
+    factor                         shift and go to state 3
 
 state 33
 
-    (13) term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression . RBRACKET
+    (12) expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression . RBRACKET
+    (3) expression -> expression . END
 
     RBRACKET        shift and go to state 34
+    END             shift and go to state 8
 
 
 state 34
 
-    (13) term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .
+    (12) expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .
 
-    END             reduce using rule 13 (term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
-    $end            reduce using rule 13 (term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
-    LBRACKET        reduce using rule 13 (term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
-    GREATER         reduce using rule 13 (term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
-    FEWER           reduce using rule 13 (term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
-    RBRACKET        reduce using rule 13 (term -> IF expression LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    END             reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    $end            reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    GREATER         reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    FEWER           reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    +               reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    -               reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
+    RBRACKET        reduce using rule 12 (expression -> IF judge LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET .)
 
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for + in state 2 resolved as shift
+WARNING: shift/reduce conflict for - in state 2 resolved as shift
+WARNING: shift/reduce conflict for END in state 22 resolved as shift
