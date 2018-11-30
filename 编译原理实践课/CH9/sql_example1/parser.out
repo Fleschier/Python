@@ -1,0 +1,285 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AVG
+
+Grammar
+
+Rule 0     S' -> query
+Rule 1     query -> select
+Rule 2     select -> SELECT list FROM table WHERE lst ORDER BY list
+Rule 3     select -> SELECT list FROM table WHERE lst
+Rule 4     select -> SELECT list FROM table ORDER BY list
+Rule 5     select -> SELECT list FROM table
+Rule 6     table -> NAME
+Rule 7     lst -> condition
+Rule 8     condition -> NAME > NUMBER
+Rule 9     condition -> NAME < NUMBER
+Rule 10    condition -> NAME = NUMBER
+Rule 11    list -> *
+Rule 12    list -> NAME
+
+Terminals, with rules where they appear
+
+*                    : 11
+<                    : 9
+=                    : 10
+>                    : 8
+AVG                  : 
+BY                   : 2 4
+FROM                 : 2 3 4 5
+NAME                 : 6 8 9 10 12
+NUMBER               : 8 9 10
+ORDER                : 2 4
+SELECT               : 2 3 4 5
+WHERE                : 2 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+condition            : 7
+list                 : 2 2 3 4 4 5
+lst                  : 2 3
+query                : 0
+select               : 1
+table                : 2 3 4 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . query
+    (1) query -> . select
+    (2) select -> . SELECT list FROM table WHERE lst ORDER BY list
+    (3) select -> . SELECT list FROM table WHERE lst
+    (4) select -> . SELECT list FROM table ORDER BY list
+    (5) select -> . SELECT list FROM table
+
+    SELECT          shift and go to state 3
+
+    query                          shift and go to state 2
+    select                         shift and go to state 1
+
+state 1
+
+    (1) query -> select .
+
+    $end            reduce using rule 1 (query -> select .)
+
+
+state 2
+
+    (0) S' -> query .
+
+
+
+state 3
+
+    (2) select -> SELECT . list FROM table WHERE lst ORDER BY list
+    (3) select -> SELECT . list FROM table WHERE lst
+    (4) select -> SELECT . list FROM table ORDER BY list
+    (5) select -> SELECT . list FROM table
+    (11) list -> . *
+    (12) list -> . NAME
+
+    *               shift and go to state 5
+    NAME            shift and go to state 4
+
+    list                           shift and go to state 6
+
+state 4
+
+    (12) list -> NAME .
+
+    $end            reduce using rule 12 (list -> NAME .)
+    FROM            reduce using rule 12 (list -> NAME .)
+
+
+state 5
+
+    (11) list -> * .
+
+    $end            reduce using rule 11 (list -> * .)
+    FROM            reduce using rule 11 (list -> * .)
+
+
+state 6
+
+    (2) select -> SELECT list . FROM table WHERE lst ORDER BY list
+    (3) select -> SELECT list . FROM table WHERE lst
+    (4) select -> SELECT list . FROM table ORDER BY list
+    (5) select -> SELECT list . FROM table
+
+    FROM            shift and go to state 7
+
+
+state 7
+
+    (2) select -> SELECT list FROM . table WHERE lst ORDER BY list
+    (3) select -> SELECT list FROM . table WHERE lst
+    (4) select -> SELECT list FROM . table ORDER BY list
+    (5) select -> SELECT list FROM . table
+    (6) table -> . NAME
+
+    NAME            shift and go to state 8
+
+    table                          shift and go to state 9
+
+state 8
+
+    (6) table -> NAME .
+
+    WHERE           reduce using rule 6 (table -> NAME .)
+    ORDER           reduce using rule 6 (table -> NAME .)
+    $end            reduce using rule 6 (table -> NAME .)
+
+
+state 9
+
+    (2) select -> SELECT list FROM table . WHERE lst ORDER BY list
+    (3) select -> SELECT list FROM table . WHERE lst
+    (4) select -> SELECT list FROM table . ORDER BY list
+    (5) select -> SELECT list FROM table .
+
+    WHERE           shift and go to state 10
+    ORDER           shift and go to state 11
+    $end            reduce using rule 5 (select -> SELECT list FROM table .)
+
+
+state 10
+
+    (2) select -> SELECT list FROM table WHERE . lst ORDER BY list
+    (3) select -> SELECT list FROM table WHERE . lst
+    (7) lst -> . condition
+    (8) condition -> . NAME > NUMBER
+    (9) condition -> . NAME < NUMBER
+    (10) condition -> . NAME = NUMBER
+
+    NAME            shift and go to state 12
+
+    lst                            shift and go to state 13
+    condition                      shift and go to state 14
+
+state 11
+
+    (4) select -> SELECT list FROM table ORDER . BY list
+
+    BY              shift and go to state 15
+
+
+state 12
+
+    (8) condition -> NAME . > NUMBER
+    (9) condition -> NAME . < NUMBER
+    (10) condition -> NAME . = NUMBER
+
+    >               shift and go to state 18
+    <               shift and go to state 17
+    =               shift and go to state 16
+
+
+state 13
+
+    (2) select -> SELECT list FROM table WHERE lst . ORDER BY list
+    (3) select -> SELECT list FROM table WHERE lst .
+
+    ORDER           shift and go to state 19
+    $end            reduce using rule 3 (select -> SELECT list FROM table WHERE lst .)
+
+
+state 14
+
+    (7) lst -> condition .
+
+    ORDER           reduce using rule 7 (lst -> condition .)
+    $end            reduce using rule 7 (lst -> condition .)
+
+
+state 15
+
+    (4) select -> SELECT list FROM table ORDER BY . list
+    (11) list -> . *
+    (12) list -> . NAME
+
+    *               shift and go to state 5
+    NAME            shift and go to state 4
+
+    list                           shift and go to state 20
+
+state 16
+
+    (10) condition -> NAME = . NUMBER
+
+    NUMBER          shift and go to state 21
+
+
+state 17
+
+    (9) condition -> NAME < . NUMBER
+
+    NUMBER          shift and go to state 22
+
+
+state 18
+
+    (8) condition -> NAME > . NUMBER
+
+    NUMBER          shift and go to state 23
+
+
+state 19
+
+    (2) select -> SELECT list FROM table WHERE lst ORDER . BY list
+
+    BY              shift and go to state 24
+
+
+state 20
+
+    (4) select -> SELECT list FROM table ORDER BY list .
+
+    $end            reduce using rule 4 (select -> SELECT list FROM table ORDER BY list .)
+
+
+state 21
+
+    (10) condition -> NAME = NUMBER .
+
+    ORDER           reduce using rule 10 (condition -> NAME = NUMBER .)
+    $end            reduce using rule 10 (condition -> NAME = NUMBER .)
+
+
+state 22
+
+    (9) condition -> NAME < NUMBER .
+
+    ORDER           reduce using rule 9 (condition -> NAME < NUMBER .)
+    $end            reduce using rule 9 (condition -> NAME < NUMBER .)
+
+
+state 23
+
+    (8) condition -> NAME > NUMBER .
+
+    ORDER           reduce using rule 8 (condition -> NAME > NUMBER .)
+    $end            reduce using rule 8 (condition -> NAME > NUMBER .)
+
+
+state 24
+
+    (2) select -> SELECT list FROM table WHERE lst ORDER BY . list
+    (11) list -> . *
+    (12) list -> . NAME
+
+    *               shift and go to state 5
+    NAME            shift and go to state 4
+
+    list                           shift and go to state 25
+
+state 25
+
+    (2) select -> SELECT list FROM table WHERE lst ORDER BY list .
+
+    $end            reduce using rule 2 (select -> SELECT list FROM table WHERE lst ORDER BY list .)
+

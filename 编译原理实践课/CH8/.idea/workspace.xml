@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d1f01db-3d07-4daa-b388-ac793c9c7ab1" name="Default Changelist" comment="" />
+    <list default="true" id="6d1f01db-3d07-4daa-b388-ac793c9c7ab1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8th.docx" beforeDir="false" afterPath="$PROJECT_DIR$/8th.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch8.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch8.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,6 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/CH8$ch8.coverage" NAME="ch8 Coverage Results" MODIFIED="1543124433508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CH8$sql_parser.coverage" NAME="sql_parser Coverage Results" MODIFIED="1543030035547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sql_example1" />
   </component>
   <component name="FUSProjectUsageTrigger">
@@ -40,14 +45,48 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="294656738">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="3745" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="3744" />
+          <entry key="SQL" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="out" value="2" />
+          <entry key="py" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Python" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql_example1/sql_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+            <state relative-caret-position="144">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="e#37#58#0" expanded="true" />
               </folding>
@@ -58,11 +97,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ch8.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            <state relative-caret-position="667">
+              <caret line="306" column="19" lean-forward="true" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
               <folding>
-                <element signature="e#37#58#0" expanded="true" />
-                <element signature="e#475#539#0" />
+                <element signature="e#38#59#0" expanded="true" />
+                <element signature="e#395#417#0" />
+                <element signature="e#437#457#0" />
+                <element signature="e#478#499#0" />
+                <element signature="e#520#541#0" />
+                <element signature="e#559#577#0" />
+                <element signature="e#596#615#0" />
+                <element signature="e#633#651#0" />
+                <element signature="e#672#690#0" />
+                <element signature="e#708#726#0" />
+                <element signature="e#744#762#0" />
+                <element signature="e#781#800#0" />
+                <element signature="e#823#846#0" />
+                <element signature="e#864#882#0" />
+                <element signature="e#901#920#0" />
+                <element signature="e#939#958#0" />
+                <element signature="e#977#996#0" />
+                <element signature="e#1017#1038#0" />
+                <element signature="e#1060#1082#0" />
+                <element signature="e#1100#1118#0" />
+                <element signature="e#1137#1155#0" />
+                <element signature="e#1175#1238#0" />
+                <element signature="e#1726#1852#0" />
+                <element signature="e#2196#2218#0" />
+                <element signature="e#3868#3945#0" />
+                <element signature="e#3972#4048#0" />
+                <element signature="e#3674#3962#0" />
+                <element signature="e#4786#5331#0" />
+                <element signature="e#6215#6279#0" />
+                <element signature="e#6372#6458#0" />
+                <element signature="e#6522#6596#0" />
+                <element signature="e#5694#5772#0" />
               </folding>
             </state>
           </provider>
@@ -76,6 +145,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -92,11 +164,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="27" />
     <option name="width" value="960" />
     <option name="height" value="1053" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -135,7 +208,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.ch8">
+    <configuration name="ch8" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CH8" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ch8.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sql_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CH8" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,8 +253,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.sql_parser" />
+      <item itemvalue="Python.ch8" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ch8" />
         <item itemvalue="Python.sql_parser" />
       </list>
     </recent_temporary>
@@ -178,32 +278,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1680" height="1023" extended-state="7" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13858365" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992343" visible="true" weight="0.14224665" />
+      <window_info id="Structure" order="1" sideWeight="0.5007657" side_tool="true" weight="0.14224665" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25361514" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="R Packages" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,10 +312,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/parser.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="1167" lean-forward="true" selection-start-line="1167" selection-end-line="1167" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sql_example1/sql_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+        <state relative-caret-position="144">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="e#37#58#0" expanded="true" />
           </folding>
@@ -225,18 +331,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sql_example1/node.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        <state relative-caret-position="363">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ch8.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+        <state relative-caret-position="667">
+          <caret line="306" column="19" lean-forward="true" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
           <folding>
-            <element signature="e#37#58#0" expanded="true" />
-            <element signature="e#475#539#0" />
+            <element signature="e#38#59#0" expanded="true" />
+            <element signature="e#395#417#0" />
+            <element signature="e#437#457#0" />
+            <element signature="e#478#499#0" />
+            <element signature="e#520#541#0" />
+            <element signature="e#559#577#0" />
+            <element signature="e#596#615#0" />
+            <element signature="e#633#651#0" />
+            <element signature="e#672#690#0" />
+            <element signature="e#708#726#0" />
+            <element signature="e#744#762#0" />
+            <element signature="e#781#800#0" />
+            <element signature="e#823#846#0" />
+            <element signature="e#864#882#0" />
+            <element signature="e#901#920#0" />
+            <element signature="e#939#958#0" />
+            <element signature="e#977#996#0" />
+            <element signature="e#1017#1038#0" />
+            <element signature="e#1060#1082#0" />
+            <element signature="e#1100#1118#0" />
+            <element signature="e#1137#1155#0" />
+            <element signature="e#1175#1238#0" />
+            <element signature="e#1726#1852#0" />
+            <element signature="e#2196#2218#0" />
+            <element signature="e#3868#3945#0" />
+            <element signature="e#3972#4048#0" />
+            <element signature="e#3674#3962#0" />
+            <element signature="e#4786#5331#0" />
+            <element signature="e#6215#6279#0" />
+            <element signature="e#6372#6458#0" />
+            <element signature="e#6522#6596#0" />
+            <element signature="e#5694#5772#0" />
           </folding>
         </state>
       </provider>
