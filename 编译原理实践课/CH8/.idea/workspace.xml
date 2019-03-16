@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1f01db-3d07-4daa-b388-ac793c9c7ab1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/8th.docx" beforeDir="false" afterPath="$PROJECT_DIR$/8th.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch8.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CH11/CH11.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CH11/example.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CH6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CH6/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,11 +48,12 @@
     <session id="294656738">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -85,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql_example1/sql_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="1512">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="e#37#58#0" expanded="true" />
               </folding>
@@ -97,42 +98,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ch8.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="306" column="19" lean-forward="true" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
-              <folding>
-                <element signature="e#38#59#0" expanded="true" />
-                <element signature="e#395#417#0" />
-                <element signature="e#437#457#0" />
-                <element signature="e#478#499#0" />
-                <element signature="e#520#541#0" />
-                <element signature="e#559#577#0" />
-                <element signature="e#596#615#0" />
-                <element signature="e#633#651#0" />
-                <element signature="e#672#690#0" />
-                <element signature="e#708#726#0" />
-                <element signature="e#744#762#0" />
-                <element signature="e#781#800#0" />
-                <element signature="e#823#846#0" />
-                <element signature="e#864#882#0" />
-                <element signature="e#901#920#0" />
-                <element signature="e#939#958#0" />
-                <element signature="e#977#996#0" />
-                <element signature="e#1017#1038#0" />
-                <element signature="e#1060#1082#0" />
-                <element signature="e#1100#1118#0" />
-                <element signature="e#1137#1155#0" />
-                <element signature="e#1175#1238#0" />
-                <element signature="e#1726#1852#0" />
-                <element signature="e#2196#2218#0" />
-                <element signature="e#3868#3945#0" />
-                <element signature="e#3972#4048#0" />
-                <element signature="e#3674#3962#0" />
-                <element signature="e#4786#5331#0" />
-                <element signature="e#6215#6279#0" />
-                <element signature="e#6372#6458#0" />
-                <element signature="e#6522#6596#0" />
-                <element signature="e#5694#5772#0" />
-              </folding>
+            <state relative-caret-position="6592">
+              <caret line="306" column="19" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -175,7 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -187,11 +153,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CH7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -278,9 +245,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992343" visible="true" weight="0.14224665" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992343" visible="true" weight="0.14376996" />
       <window_info id="Structure" order="1" sideWeight="0.5007657" side_tool="true" weight="0.14224665" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -319,16 +287,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql_example1/sql_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#37#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql_example1/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -336,44 +294,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sql_example1/sql_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#37#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ch8.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="306" column="19" lean-forward="true" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
-          <folding>
-            <element signature="e#38#59#0" expanded="true" />
-            <element signature="e#395#417#0" />
-            <element signature="e#437#457#0" />
-            <element signature="e#478#499#0" />
-            <element signature="e#520#541#0" />
-            <element signature="e#559#577#0" />
-            <element signature="e#596#615#0" />
-            <element signature="e#633#651#0" />
-            <element signature="e#672#690#0" />
-            <element signature="e#708#726#0" />
-            <element signature="e#744#762#0" />
-            <element signature="e#781#800#0" />
-            <element signature="e#823#846#0" />
-            <element signature="e#864#882#0" />
-            <element signature="e#901#920#0" />
-            <element signature="e#939#958#0" />
-            <element signature="e#977#996#0" />
-            <element signature="e#1017#1038#0" />
-            <element signature="e#1060#1082#0" />
-            <element signature="e#1100#1118#0" />
-            <element signature="e#1137#1155#0" />
-            <element signature="e#1175#1238#0" />
-            <element signature="e#1726#1852#0" />
-            <element signature="e#2196#2218#0" />
-            <element signature="e#3868#3945#0" />
-            <element signature="e#3972#4048#0" />
-            <element signature="e#3674#3962#0" />
-            <element signature="e#4786#5331#0" />
-            <element signature="e#6215#6279#0" />
-            <element signature="e#6372#6458#0" />
-            <element signature="e#6522#6596#0" />
-            <element signature="e#5694#5772#0" />
-          </folding>
+        <state relative-caret-position="6592">
+          <caret line="306" column="19" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
         </state>
       </provider>
     </entry>

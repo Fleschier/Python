@@ -1,0 +1,1777 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statements statement
+Rule 3     statements -> statement
+Rule 4     statement -> assignment
+Rule 5     statement -> operation
+Rule 6     statement -> print
+Rule 7     statement -> if
+Rule 8     statement -> elif
+Rule 9     statement -> while
+Rule 10    statement -> for
+Rule 11    statement -> else
+Rule 12    assignment -> VARIABLE = NUMBER
+Rule 13    assignment -> VARIABLE = list
+Rule 14    assignment -> VARIABLE = len
+Rule 15    assignment -> VARIABLE = VARIABLE
+Rule 16    assignment -> VARIABLE = ( expr ) / / NUMBER
+Rule 17    list -> [ nums ]
+Rule 18    nums -> nums , NUMBER
+Rule 19    nums -> NUMBER
+Rule 20    len -> LEN ( VARIABLE )
+Rule 21    operation -> VARIABLE = expr
+Rule 22    expr -> expr + term
+Rule 23    expr -> expr - term
+Rule 24    expr -> term
+Rule 25    term -> term * factor
+Rule 26    term -> term / factor
+Rule 27    term -> factor
+Rule 28    factor -> VARIABLE
+Rule 29    factor -> NUMBER
+Rule 30    print -> PRINT ( values )
+Rule 31    values -> VARIABLE
+Rule 32    values -> values , VARIABLE
+Rule 33    conditions -> conditions ; condition
+Rule 34    conditions -> condition
+Rule 35    condition -> VARIABLE > VARIABLE
+Rule 36    condition -> VARIABLE < VARIABLE
+Rule 37    condition -> VARIABLE < = VARIABLE
+Rule 38    condition -> VARIABLE > = VARIABLE
+Rule 39    condition -> assignment
+Rule 40    condition -> VARIABLE + +
+Rule 41    if -> IF ( condition ) { statements }
+Rule 42    elif -> ELIF ( condition ) { statements }
+Rule 43    else -> ELSE { BREAK }
+Rule 44    while -> WHILE ( condition ) { statements }
+Rule 45    for -> FOR ( conditions ) { statements }
+
+Terminals, with rules where they appear
+
+(                    : 16 20 30 41 42 44 45
+)                    : 16 20 30 41 42 44 45
+*                    : 25
++                    : 22 40 40
+,                    : 18 32
+-                    : 23
+/                    : 16 16 26
+;                    : 33
+<                    : 36 37
+=                    : 12 13 14 15 16 21 37 38
+>                    : 35 38
+BREAK                : 43
+ELIF                 : 42
+ELSE                 : 43
+FOR                  : 45
+IF                   : 41
+LEN                  : 20
+NUMBER               : 12 16 18 19 29
+PRINT                : 30
+VARIABLE             : 12 13 14 15 15 16 20 21 28 31 32 35 35 36 36 37 37 38 38 40
+WHILE                : 44
+[                    : 17
+]                    : 17
+error                : 
+{                    : 41 42 43 44 45
+}                    : 41 42 43 44 45
+
+Nonterminals, with rules where they appear
+
+assignment           : 4 39
+condition            : 33 34 41 42 44
+conditions           : 33 45
+elif                 : 8
+else                 : 11
+expr                 : 16 21 22 23
+factor               : 25 26 27
+for                  : 10
+if                   : 7
+len                  : 14
+list                 : 13
+nums                 : 17 18
+operation            : 5
+print                : 6
+program              : 0
+statement            : 2 3
+statements           : 1 2 41 42 44 45
+term                 : 22 23 24 25 26
+values               : 30 32
+while                : 9
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements .
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    $end            reduce using rule 1 (program -> statements .)
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statement                      shift and go to state 19
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 3
+
+    (3) statements -> statement .
+
+    VARIABLE        reduce using rule 3 (statements -> statement .)
+    PRINT           reduce using rule 3 (statements -> statement .)
+    IF              reduce using rule 3 (statements -> statement .)
+    ELIF            reduce using rule 3 (statements -> statement .)
+    WHILE           reduce using rule 3 (statements -> statement .)
+    FOR             reduce using rule 3 (statements -> statement .)
+    ELSE            reduce using rule 3 (statements -> statement .)
+    $end            reduce using rule 3 (statements -> statement .)
+    }               reduce using rule 3 (statements -> statement .)
+
+
+state 4
+
+    (4) statement -> assignment .
+
+    VARIABLE        reduce using rule 4 (statement -> assignment .)
+    PRINT           reduce using rule 4 (statement -> assignment .)
+    IF              reduce using rule 4 (statement -> assignment .)
+    ELIF            reduce using rule 4 (statement -> assignment .)
+    WHILE           reduce using rule 4 (statement -> assignment .)
+    FOR             reduce using rule 4 (statement -> assignment .)
+    ELSE            reduce using rule 4 (statement -> assignment .)
+    $end            reduce using rule 4 (statement -> assignment .)
+    }               reduce using rule 4 (statement -> assignment .)
+
+
+state 5
+
+    (5) statement -> operation .
+
+    VARIABLE        reduce using rule 5 (statement -> operation .)
+    PRINT           reduce using rule 5 (statement -> operation .)
+    IF              reduce using rule 5 (statement -> operation .)
+    ELIF            reduce using rule 5 (statement -> operation .)
+    WHILE           reduce using rule 5 (statement -> operation .)
+    FOR             reduce using rule 5 (statement -> operation .)
+    ELSE            reduce using rule 5 (statement -> operation .)
+    $end            reduce using rule 5 (statement -> operation .)
+    }               reduce using rule 5 (statement -> operation .)
+
+
+state 6
+
+    (6) statement -> print .
+
+    VARIABLE        reduce using rule 6 (statement -> print .)
+    PRINT           reduce using rule 6 (statement -> print .)
+    IF              reduce using rule 6 (statement -> print .)
+    ELIF            reduce using rule 6 (statement -> print .)
+    WHILE           reduce using rule 6 (statement -> print .)
+    FOR             reduce using rule 6 (statement -> print .)
+    ELSE            reduce using rule 6 (statement -> print .)
+    $end            reduce using rule 6 (statement -> print .)
+    }               reduce using rule 6 (statement -> print .)
+
+
+state 7
+
+    (7) statement -> if .
+
+    VARIABLE        reduce using rule 7 (statement -> if .)
+    PRINT           reduce using rule 7 (statement -> if .)
+    IF              reduce using rule 7 (statement -> if .)
+    ELIF            reduce using rule 7 (statement -> if .)
+    WHILE           reduce using rule 7 (statement -> if .)
+    FOR             reduce using rule 7 (statement -> if .)
+    ELSE            reduce using rule 7 (statement -> if .)
+    $end            reduce using rule 7 (statement -> if .)
+    }               reduce using rule 7 (statement -> if .)
+
+
+state 8
+
+    (8) statement -> elif .
+
+    VARIABLE        reduce using rule 8 (statement -> elif .)
+    PRINT           reduce using rule 8 (statement -> elif .)
+    IF              reduce using rule 8 (statement -> elif .)
+    ELIF            reduce using rule 8 (statement -> elif .)
+    WHILE           reduce using rule 8 (statement -> elif .)
+    FOR             reduce using rule 8 (statement -> elif .)
+    ELSE            reduce using rule 8 (statement -> elif .)
+    $end            reduce using rule 8 (statement -> elif .)
+    }               reduce using rule 8 (statement -> elif .)
+
+
+state 9
+
+    (9) statement -> while .
+
+    VARIABLE        reduce using rule 9 (statement -> while .)
+    PRINT           reduce using rule 9 (statement -> while .)
+    IF              reduce using rule 9 (statement -> while .)
+    ELIF            reduce using rule 9 (statement -> while .)
+    WHILE           reduce using rule 9 (statement -> while .)
+    FOR             reduce using rule 9 (statement -> while .)
+    ELSE            reduce using rule 9 (statement -> while .)
+    $end            reduce using rule 9 (statement -> while .)
+    }               reduce using rule 9 (statement -> while .)
+
+
+state 10
+
+    (10) statement -> for .
+
+    VARIABLE        reduce using rule 10 (statement -> for .)
+    PRINT           reduce using rule 10 (statement -> for .)
+    IF              reduce using rule 10 (statement -> for .)
+    ELIF            reduce using rule 10 (statement -> for .)
+    WHILE           reduce using rule 10 (statement -> for .)
+    FOR             reduce using rule 10 (statement -> for .)
+    ELSE            reduce using rule 10 (statement -> for .)
+    $end            reduce using rule 10 (statement -> for .)
+    }               reduce using rule 10 (statement -> for .)
+
+
+state 11
+
+    (11) statement -> else .
+
+    VARIABLE        reduce using rule 11 (statement -> else .)
+    PRINT           reduce using rule 11 (statement -> else .)
+    IF              reduce using rule 11 (statement -> else .)
+    ELIF            reduce using rule 11 (statement -> else .)
+    WHILE           reduce using rule 11 (statement -> else .)
+    FOR             reduce using rule 11 (statement -> else .)
+    ELSE            reduce using rule 11 (statement -> else .)
+    $end            reduce using rule 11 (statement -> else .)
+    }               reduce using rule 11 (statement -> else .)
+
+
+state 12
+
+    (12) assignment -> VARIABLE . = NUMBER
+    (13) assignment -> VARIABLE . = list
+    (14) assignment -> VARIABLE . = len
+    (15) assignment -> VARIABLE . = VARIABLE
+    (16) assignment -> VARIABLE . = ( expr ) / / NUMBER
+    (21) operation -> VARIABLE . = expr
+
+    =               shift and go to state 20
+
+
+state 13
+
+    (30) print -> PRINT . ( values )
+
+    (               shift and go to state 21
+
+
+state 14
+
+    (41) if -> IF . ( condition ) { statements }
+
+    (               shift and go to state 22
+
+
+state 15
+
+    (42) elif -> ELIF . ( condition ) { statements }
+
+    (               shift and go to state 23
+
+
+state 16
+
+    (44) while -> WHILE . ( condition ) { statements }
+
+    (               shift and go to state 24
+
+
+state 17
+
+    (45) for -> FOR . ( conditions ) { statements }
+
+    (               shift and go to state 25
+
+
+state 18
+
+    (43) else -> ELSE . { BREAK }
+
+    {               shift and go to state 26
+
+
+state 19
+
+    (2) statements -> statements statement .
+
+    VARIABLE        reduce using rule 2 (statements -> statements statement .)
+    PRINT           reduce using rule 2 (statements -> statements statement .)
+    IF              reduce using rule 2 (statements -> statements statement .)
+    ELIF            reduce using rule 2 (statements -> statements statement .)
+    WHILE           reduce using rule 2 (statements -> statements statement .)
+    FOR             reduce using rule 2 (statements -> statements statement .)
+    ELSE            reduce using rule 2 (statements -> statements statement .)
+    $end            reduce using rule 2 (statements -> statements statement .)
+    }               reduce using rule 2 (statements -> statements statement .)
+
+
+state 20
+
+    (12) assignment -> VARIABLE = . NUMBER
+    (13) assignment -> VARIABLE = . list
+    (14) assignment -> VARIABLE = . len
+    (15) assignment -> VARIABLE = . VARIABLE
+    (16) assignment -> VARIABLE = . ( expr ) / / NUMBER
+    (21) operation -> VARIABLE = . expr
+    (17) list -> . [ nums ]
+    (20) len -> . LEN ( VARIABLE )
+    (22) expr -> . expr + term
+    (23) expr -> . expr - term
+    (24) expr -> . term
+    (25) term -> . term * factor
+    (26) term -> . term / factor
+    (27) term -> . factor
+    (28) factor -> . VARIABLE
+    (29) factor -> . NUMBER
+
+    NUMBER          shift and go to state 28
+    VARIABLE        shift and go to state 27
+    (               shift and go to state 31
+    [               shift and go to state 33
+    LEN             shift and go to state 34
+
+    list                           shift and go to state 29
+    len                            shift and go to state 30
+    expr                           shift and go to state 32
+    term                           shift and go to state 35
+    factor                         shift and go to state 36
+
+state 21
+
+    (30) print -> PRINT ( . values )
+    (31) values -> . VARIABLE
+    (32) values -> . values , VARIABLE
+
+    VARIABLE        shift and go to state 38
+
+    values                         shift and go to state 37
+
+state 22
+
+    (41) if -> IF ( . condition ) { statements }
+    (35) condition -> . VARIABLE > VARIABLE
+    (36) condition -> . VARIABLE < VARIABLE
+    (37) condition -> . VARIABLE < = VARIABLE
+    (38) condition -> . VARIABLE > = VARIABLE
+    (39) condition -> . assignment
+    (40) condition -> . VARIABLE + +
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+
+    VARIABLE        shift and go to state 40
+
+    condition                      shift and go to state 39
+    assignment                     shift and go to state 41
+
+state 23
+
+    (42) elif -> ELIF ( . condition ) { statements }
+    (35) condition -> . VARIABLE > VARIABLE
+    (36) condition -> . VARIABLE < VARIABLE
+    (37) condition -> . VARIABLE < = VARIABLE
+    (38) condition -> . VARIABLE > = VARIABLE
+    (39) condition -> . assignment
+    (40) condition -> . VARIABLE + +
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+
+    VARIABLE        shift and go to state 40
+
+    condition                      shift and go to state 42
+    assignment                     shift and go to state 41
+
+state 24
+
+    (44) while -> WHILE ( . condition ) { statements }
+    (35) condition -> . VARIABLE > VARIABLE
+    (36) condition -> . VARIABLE < VARIABLE
+    (37) condition -> . VARIABLE < = VARIABLE
+    (38) condition -> . VARIABLE > = VARIABLE
+    (39) condition -> . assignment
+    (40) condition -> . VARIABLE + +
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+
+    VARIABLE        shift and go to state 40
+
+    condition                      shift and go to state 43
+    assignment                     shift and go to state 41
+
+state 25
+
+    (45) for -> FOR ( . conditions ) { statements }
+    (33) conditions -> . conditions ; condition
+    (34) conditions -> . condition
+    (35) condition -> . VARIABLE > VARIABLE
+    (36) condition -> . VARIABLE < VARIABLE
+    (37) condition -> . VARIABLE < = VARIABLE
+    (38) condition -> . VARIABLE > = VARIABLE
+    (39) condition -> . assignment
+    (40) condition -> . VARIABLE + +
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+
+    VARIABLE        shift and go to state 40
+
+    conditions                     shift and go to state 44
+    condition                      shift and go to state 45
+    assignment                     shift and go to state 41
+
+state 26
+
+    (43) else -> ELSE { . BREAK }
+
+    BREAK           shift and go to state 46
+
+
+state 27
+
+    (15) assignment -> VARIABLE = VARIABLE .
+    (28) factor -> VARIABLE .
+
+  ! reduce/reduce conflict for VARIABLE resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for PRINT resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for IF resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for ELIF resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for WHILE resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for FOR resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for ELSE resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for $end resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+  ! reduce/reduce conflict for } resolved using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    VARIABLE        reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    PRINT           reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    IF              reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    ELIF            reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    WHILE           reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    FOR             reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    ELSE            reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    $end            reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    }               reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    *               reduce using rule 28 (factor -> VARIABLE .)
+    /               reduce using rule 28 (factor -> VARIABLE .)
+    +               reduce using rule 28 (factor -> VARIABLE .)
+    -               reduce using rule 28 (factor -> VARIABLE .)
+
+  ! VARIABLE        [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! PRINT           [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! IF              [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! ELIF            [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! WHILE           [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! FOR             [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! ELSE            [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! $end            [ reduce using rule 28 (factor -> VARIABLE .) ]
+  ! }               [ reduce using rule 28 (factor -> VARIABLE .) ]
+
+
+state 28
+
+    (12) assignment -> VARIABLE = NUMBER .
+    (29) factor -> NUMBER .
+
+  ! reduce/reduce conflict for VARIABLE resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for PRINT resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for IF resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for ELIF resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for WHILE resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for FOR resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for ELSE resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for $end resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+  ! reduce/reduce conflict for } resolved using rule 12 (assignment -> VARIABLE = NUMBER .)
+    VARIABLE        reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    PRINT           reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    IF              reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    ELIF            reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    WHILE           reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    FOR             reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    ELSE            reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    $end            reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    }               reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    *               reduce using rule 29 (factor -> NUMBER .)
+    /               reduce using rule 29 (factor -> NUMBER .)
+    +               reduce using rule 29 (factor -> NUMBER .)
+    -               reduce using rule 29 (factor -> NUMBER .)
+
+  ! VARIABLE        [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! PRINT           [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! IF              [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! ELIF            [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! WHILE           [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! FOR             [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! ELSE            [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! $end            [ reduce using rule 29 (factor -> NUMBER .) ]
+  ! }               [ reduce using rule 29 (factor -> NUMBER .) ]
+
+
+state 29
+
+    (13) assignment -> VARIABLE = list .
+
+    VARIABLE        reduce using rule 13 (assignment -> VARIABLE = list .)
+    PRINT           reduce using rule 13 (assignment -> VARIABLE = list .)
+    IF              reduce using rule 13 (assignment -> VARIABLE = list .)
+    ELIF            reduce using rule 13 (assignment -> VARIABLE = list .)
+    WHILE           reduce using rule 13 (assignment -> VARIABLE = list .)
+    FOR             reduce using rule 13 (assignment -> VARIABLE = list .)
+    ELSE            reduce using rule 13 (assignment -> VARIABLE = list .)
+    $end            reduce using rule 13 (assignment -> VARIABLE = list .)
+    )               reduce using rule 13 (assignment -> VARIABLE = list .)
+    ;               reduce using rule 13 (assignment -> VARIABLE = list .)
+    }               reduce using rule 13 (assignment -> VARIABLE = list .)
+
+
+state 30
+
+    (14) assignment -> VARIABLE = len .
+
+    VARIABLE        reduce using rule 14 (assignment -> VARIABLE = len .)
+    PRINT           reduce using rule 14 (assignment -> VARIABLE = len .)
+    IF              reduce using rule 14 (assignment -> VARIABLE = len .)
+    ELIF            reduce using rule 14 (assignment -> VARIABLE = len .)
+    WHILE           reduce using rule 14 (assignment -> VARIABLE = len .)
+    FOR             reduce using rule 14 (assignment -> VARIABLE = len .)
+    ELSE            reduce using rule 14 (assignment -> VARIABLE = len .)
+    $end            reduce using rule 14 (assignment -> VARIABLE = len .)
+    )               reduce using rule 14 (assignment -> VARIABLE = len .)
+    ;               reduce using rule 14 (assignment -> VARIABLE = len .)
+    }               reduce using rule 14 (assignment -> VARIABLE = len .)
+
+
+state 31
+
+    (16) assignment -> VARIABLE = ( . expr ) / / NUMBER
+    (22) expr -> . expr + term
+    (23) expr -> . expr - term
+    (24) expr -> . term
+    (25) term -> . term * factor
+    (26) term -> . term / factor
+    (27) term -> . factor
+    (28) factor -> . VARIABLE
+    (29) factor -> . NUMBER
+
+    VARIABLE        shift and go to state 47
+    NUMBER          shift and go to state 49
+
+    expr                           shift and go to state 48
+    term                           shift and go to state 35
+    factor                         shift and go to state 36
+
+state 32
+
+    (21) operation -> VARIABLE = expr .
+    (22) expr -> expr . + term
+    (23) expr -> expr . - term
+
+    VARIABLE        reduce using rule 21 (operation -> VARIABLE = expr .)
+    PRINT           reduce using rule 21 (operation -> VARIABLE = expr .)
+    IF              reduce using rule 21 (operation -> VARIABLE = expr .)
+    ELIF            reduce using rule 21 (operation -> VARIABLE = expr .)
+    WHILE           reduce using rule 21 (operation -> VARIABLE = expr .)
+    FOR             reduce using rule 21 (operation -> VARIABLE = expr .)
+    ELSE            reduce using rule 21 (operation -> VARIABLE = expr .)
+    $end            reduce using rule 21 (operation -> VARIABLE = expr .)
+    }               reduce using rule 21 (operation -> VARIABLE = expr .)
+    +               shift and go to state 50
+    -               shift and go to state 51
+
+
+state 33
+
+    (17) list -> [ . nums ]
+    (18) nums -> . nums , NUMBER
+    (19) nums -> . NUMBER
+
+    NUMBER          shift and go to state 53
+
+    nums                           shift and go to state 52
+
+state 34
+
+    (20) len -> LEN . ( VARIABLE )
+
+    (               shift and go to state 54
+
+
+state 35
+
+    (24) expr -> term .
+    (25) term -> term . * factor
+    (26) term -> term . / factor
+
+    +               reduce using rule 24 (expr -> term .)
+    -               reduce using rule 24 (expr -> term .)
+    VARIABLE        reduce using rule 24 (expr -> term .)
+    PRINT           reduce using rule 24 (expr -> term .)
+    IF              reduce using rule 24 (expr -> term .)
+    ELIF            reduce using rule 24 (expr -> term .)
+    WHILE           reduce using rule 24 (expr -> term .)
+    FOR             reduce using rule 24 (expr -> term .)
+    ELSE            reduce using rule 24 (expr -> term .)
+    $end            reduce using rule 24 (expr -> term .)
+    }               reduce using rule 24 (expr -> term .)
+    )               reduce using rule 24 (expr -> term .)
+    *               shift and go to state 55
+    /               shift and go to state 56
+
+
+state 36
+
+    (27) term -> factor .
+
+    *               reduce using rule 27 (term -> factor .)
+    /               reduce using rule 27 (term -> factor .)
+    +               reduce using rule 27 (term -> factor .)
+    -               reduce using rule 27 (term -> factor .)
+    VARIABLE        reduce using rule 27 (term -> factor .)
+    PRINT           reduce using rule 27 (term -> factor .)
+    IF              reduce using rule 27 (term -> factor .)
+    ELIF            reduce using rule 27 (term -> factor .)
+    WHILE           reduce using rule 27 (term -> factor .)
+    FOR             reduce using rule 27 (term -> factor .)
+    ELSE            reduce using rule 27 (term -> factor .)
+    $end            reduce using rule 27 (term -> factor .)
+    }               reduce using rule 27 (term -> factor .)
+    )               reduce using rule 27 (term -> factor .)
+
+
+state 37
+
+    (30) print -> PRINT ( values . )
+    (32) values -> values . , VARIABLE
+
+    )               shift and go to state 57
+    ,               shift and go to state 58
+
+
+state 38
+
+    (31) values -> VARIABLE .
+
+    )               reduce using rule 31 (values -> VARIABLE .)
+    ,               reduce using rule 31 (values -> VARIABLE .)
+
+
+state 39
+
+    (41) if -> IF ( condition . ) { statements }
+
+    )               shift and go to state 59
+
+
+state 40
+
+    (35) condition -> VARIABLE . > VARIABLE
+    (36) condition -> VARIABLE . < VARIABLE
+    (37) condition -> VARIABLE . < = VARIABLE
+    (38) condition -> VARIABLE . > = VARIABLE
+    (40) condition -> VARIABLE . + +
+    (12) assignment -> VARIABLE . = NUMBER
+    (13) assignment -> VARIABLE . = list
+    (14) assignment -> VARIABLE . = len
+    (15) assignment -> VARIABLE . = VARIABLE
+    (16) assignment -> VARIABLE . = ( expr ) / / NUMBER
+
+    >               shift and go to state 60
+    <               shift and go to state 61
+    +               shift and go to state 63
+    =               shift and go to state 62
+
+
+state 41
+
+    (39) condition -> assignment .
+
+    )               reduce using rule 39 (condition -> assignment .)
+    ;               reduce using rule 39 (condition -> assignment .)
+
+
+state 42
+
+    (42) elif -> ELIF ( condition . ) { statements }
+
+    )               shift and go to state 64
+
+
+state 43
+
+    (44) while -> WHILE ( condition . ) { statements }
+
+    )               shift and go to state 65
+
+
+state 44
+
+    (45) for -> FOR ( conditions . ) { statements }
+    (33) conditions -> conditions . ; condition
+
+    )               shift and go to state 66
+    ;               shift and go to state 67
+
+
+state 45
+
+    (34) conditions -> condition .
+
+    )               reduce using rule 34 (conditions -> condition .)
+    ;               reduce using rule 34 (conditions -> condition .)
+
+
+state 46
+
+    (43) else -> ELSE { BREAK . }
+
+    }               shift and go to state 68
+
+
+state 47
+
+    (28) factor -> VARIABLE .
+
+    *               reduce using rule 28 (factor -> VARIABLE .)
+    /               reduce using rule 28 (factor -> VARIABLE .)
+    )               reduce using rule 28 (factor -> VARIABLE .)
+    +               reduce using rule 28 (factor -> VARIABLE .)
+    -               reduce using rule 28 (factor -> VARIABLE .)
+    VARIABLE        reduce using rule 28 (factor -> VARIABLE .)
+    PRINT           reduce using rule 28 (factor -> VARIABLE .)
+    IF              reduce using rule 28 (factor -> VARIABLE .)
+    ELIF            reduce using rule 28 (factor -> VARIABLE .)
+    WHILE           reduce using rule 28 (factor -> VARIABLE .)
+    FOR             reduce using rule 28 (factor -> VARIABLE .)
+    ELSE            reduce using rule 28 (factor -> VARIABLE .)
+    $end            reduce using rule 28 (factor -> VARIABLE .)
+    }               reduce using rule 28 (factor -> VARIABLE .)
+
+
+state 48
+
+    (16) assignment -> VARIABLE = ( expr . ) / / NUMBER
+    (22) expr -> expr . + term
+    (23) expr -> expr . - term
+
+    )               shift and go to state 69
+    +               shift and go to state 50
+    -               shift and go to state 51
+
+
+state 49
+
+    (29) factor -> NUMBER .
+
+    *               reduce using rule 29 (factor -> NUMBER .)
+    /               reduce using rule 29 (factor -> NUMBER .)
+    )               reduce using rule 29 (factor -> NUMBER .)
+    +               reduce using rule 29 (factor -> NUMBER .)
+    -               reduce using rule 29 (factor -> NUMBER .)
+    VARIABLE        reduce using rule 29 (factor -> NUMBER .)
+    PRINT           reduce using rule 29 (factor -> NUMBER .)
+    IF              reduce using rule 29 (factor -> NUMBER .)
+    ELIF            reduce using rule 29 (factor -> NUMBER .)
+    WHILE           reduce using rule 29 (factor -> NUMBER .)
+    FOR             reduce using rule 29 (factor -> NUMBER .)
+    ELSE            reduce using rule 29 (factor -> NUMBER .)
+    $end            reduce using rule 29 (factor -> NUMBER .)
+    }               reduce using rule 29 (factor -> NUMBER .)
+
+
+state 50
+
+    (22) expr -> expr + . term
+    (25) term -> . term * factor
+    (26) term -> . term / factor
+    (27) term -> . factor
+    (28) factor -> . VARIABLE
+    (29) factor -> . NUMBER
+
+    VARIABLE        shift and go to state 47
+    NUMBER          shift and go to state 49
+
+    term                           shift and go to state 70
+    factor                         shift and go to state 36
+
+state 51
+
+    (23) expr -> expr - . term
+    (25) term -> . term * factor
+    (26) term -> . term / factor
+    (27) term -> . factor
+    (28) factor -> . VARIABLE
+    (29) factor -> . NUMBER
+
+    VARIABLE        shift and go to state 47
+    NUMBER          shift and go to state 49
+
+    term                           shift and go to state 71
+    factor                         shift and go to state 36
+
+state 52
+
+    (17) list -> [ nums . ]
+    (18) nums -> nums . , NUMBER
+
+    ]               shift and go to state 72
+    ,               shift and go to state 73
+
+
+state 53
+
+    (19) nums -> NUMBER .
+
+    ]               reduce using rule 19 (nums -> NUMBER .)
+    ,               reduce using rule 19 (nums -> NUMBER .)
+
+
+state 54
+
+    (20) len -> LEN ( . VARIABLE )
+
+    VARIABLE        shift and go to state 74
+
+
+state 55
+
+    (25) term -> term * . factor
+    (28) factor -> . VARIABLE
+    (29) factor -> . NUMBER
+
+    VARIABLE        shift and go to state 47
+    NUMBER          shift and go to state 49
+
+    factor                         shift and go to state 75
+
+state 56
+
+    (26) term -> term / . factor
+    (28) factor -> . VARIABLE
+    (29) factor -> . NUMBER
+
+    VARIABLE        shift and go to state 47
+    NUMBER          shift and go to state 49
+
+    factor                         shift and go to state 76
+
+state 57
+
+    (30) print -> PRINT ( values ) .
+
+    VARIABLE        reduce using rule 30 (print -> PRINT ( values ) .)
+    PRINT           reduce using rule 30 (print -> PRINT ( values ) .)
+    IF              reduce using rule 30 (print -> PRINT ( values ) .)
+    ELIF            reduce using rule 30 (print -> PRINT ( values ) .)
+    WHILE           reduce using rule 30 (print -> PRINT ( values ) .)
+    FOR             reduce using rule 30 (print -> PRINT ( values ) .)
+    ELSE            reduce using rule 30 (print -> PRINT ( values ) .)
+    $end            reduce using rule 30 (print -> PRINT ( values ) .)
+    }               reduce using rule 30 (print -> PRINT ( values ) .)
+
+
+state 58
+
+    (32) values -> values , . VARIABLE
+
+    VARIABLE        shift and go to state 77
+
+
+state 59
+
+    (41) if -> IF ( condition ) . { statements }
+
+    {               shift and go to state 78
+
+
+state 60
+
+    (35) condition -> VARIABLE > . VARIABLE
+    (38) condition -> VARIABLE > . = VARIABLE
+
+    VARIABLE        shift and go to state 79
+    =               shift and go to state 80
+
+
+state 61
+
+    (36) condition -> VARIABLE < . VARIABLE
+    (37) condition -> VARIABLE < . = VARIABLE
+
+    VARIABLE        shift and go to state 81
+    =               shift and go to state 82
+
+
+state 62
+
+    (12) assignment -> VARIABLE = . NUMBER
+    (13) assignment -> VARIABLE = . list
+    (14) assignment -> VARIABLE = . len
+    (15) assignment -> VARIABLE = . VARIABLE
+    (16) assignment -> VARIABLE = . ( expr ) / / NUMBER
+    (17) list -> . [ nums ]
+    (20) len -> . LEN ( VARIABLE )
+
+    NUMBER          shift and go to state 84
+    VARIABLE        shift and go to state 83
+    (               shift and go to state 31
+    [               shift and go to state 33
+    LEN             shift and go to state 34
+
+    list                           shift and go to state 29
+    len                            shift and go to state 30
+
+state 63
+
+    (40) condition -> VARIABLE + . +
+
+    +               shift and go to state 85
+
+
+state 64
+
+    (42) elif -> ELIF ( condition ) . { statements }
+
+    {               shift and go to state 86
+
+
+state 65
+
+    (44) while -> WHILE ( condition ) . { statements }
+
+    {               shift and go to state 87
+
+
+state 66
+
+    (45) for -> FOR ( conditions ) . { statements }
+
+    {               shift and go to state 88
+
+
+state 67
+
+    (33) conditions -> conditions ; . condition
+    (35) condition -> . VARIABLE > VARIABLE
+    (36) condition -> . VARIABLE < VARIABLE
+    (37) condition -> . VARIABLE < = VARIABLE
+    (38) condition -> . VARIABLE > = VARIABLE
+    (39) condition -> . assignment
+    (40) condition -> . VARIABLE + +
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+
+    VARIABLE        shift and go to state 40
+
+    condition                      shift and go to state 89
+    assignment                     shift and go to state 41
+
+state 68
+
+    (43) else -> ELSE { BREAK } .
+
+    VARIABLE        reduce using rule 43 (else -> ELSE { BREAK } .)
+    PRINT           reduce using rule 43 (else -> ELSE { BREAK } .)
+    IF              reduce using rule 43 (else -> ELSE { BREAK } .)
+    ELIF            reduce using rule 43 (else -> ELSE { BREAK } .)
+    WHILE           reduce using rule 43 (else -> ELSE { BREAK } .)
+    FOR             reduce using rule 43 (else -> ELSE { BREAK } .)
+    ELSE            reduce using rule 43 (else -> ELSE { BREAK } .)
+    $end            reduce using rule 43 (else -> ELSE { BREAK } .)
+    }               reduce using rule 43 (else -> ELSE { BREAK } .)
+
+
+state 69
+
+    (16) assignment -> VARIABLE = ( expr ) . / / NUMBER
+
+    /               shift and go to state 90
+
+
+state 70
+
+    (22) expr -> expr + term .
+    (25) term -> term . * factor
+    (26) term -> term . / factor
+
+    +               reduce using rule 22 (expr -> expr + term .)
+    -               reduce using rule 22 (expr -> expr + term .)
+    VARIABLE        reduce using rule 22 (expr -> expr + term .)
+    PRINT           reduce using rule 22 (expr -> expr + term .)
+    IF              reduce using rule 22 (expr -> expr + term .)
+    ELIF            reduce using rule 22 (expr -> expr + term .)
+    WHILE           reduce using rule 22 (expr -> expr + term .)
+    FOR             reduce using rule 22 (expr -> expr + term .)
+    ELSE            reduce using rule 22 (expr -> expr + term .)
+    $end            reduce using rule 22 (expr -> expr + term .)
+    }               reduce using rule 22 (expr -> expr + term .)
+    )               reduce using rule 22 (expr -> expr + term .)
+    *               shift and go to state 55
+    /               shift and go to state 56
+
+
+state 71
+
+    (23) expr -> expr - term .
+    (25) term -> term . * factor
+    (26) term -> term . / factor
+
+    +               reduce using rule 23 (expr -> expr - term .)
+    -               reduce using rule 23 (expr -> expr - term .)
+    VARIABLE        reduce using rule 23 (expr -> expr - term .)
+    PRINT           reduce using rule 23 (expr -> expr - term .)
+    IF              reduce using rule 23 (expr -> expr - term .)
+    ELIF            reduce using rule 23 (expr -> expr - term .)
+    WHILE           reduce using rule 23 (expr -> expr - term .)
+    FOR             reduce using rule 23 (expr -> expr - term .)
+    ELSE            reduce using rule 23 (expr -> expr - term .)
+    $end            reduce using rule 23 (expr -> expr - term .)
+    }               reduce using rule 23 (expr -> expr - term .)
+    )               reduce using rule 23 (expr -> expr - term .)
+    *               shift and go to state 55
+    /               shift and go to state 56
+
+
+state 72
+
+    (17) list -> [ nums ] .
+
+    VARIABLE        reduce using rule 17 (list -> [ nums ] .)
+    PRINT           reduce using rule 17 (list -> [ nums ] .)
+    IF              reduce using rule 17 (list -> [ nums ] .)
+    ELIF            reduce using rule 17 (list -> [ nums ] .)
+    WHILE           reduce using rule 17 (list -> [ nums ] .)
+    FOR             reduce using rule 17 (list -> [ nums ] .)
+    ELSE            reduce using rule 17 (list -> [ nums ] .)
+    $end            reduce using rule 17 (list -> [ nums ] .)
+    }               reduce using rule 17 (list -> [ nums ] .)
+    )               reduce using rule 17 (list -> [ nums ] .)
+    ;               reduce using rule 17 (list -> [ nums ] .)
+
+
+state 73
+
+    (18) nums -> nums , . NUMBER
+
+    NUMBER          shift and go to state 91
+
+
+state 74
+
+    (20) len -> LEN ( VARIABLE . )
+
+    )               shift and go to state 92
+
+
+state 75
+
+    (25) term -> term * factor .
+
+    *               reduce using rule 25 (term -> term * factor .)
+    /               reduce using rule 25 (term -> term * factor .)
+    +               reduce using rule 25 (term -> term * factor .)
+    -               reduce using rule 25 (term -> term * factor .)
+    VARIABLE        reduce using rule 25 (term -> term * factor .)
+    PRINT           reduce using rule 25 (term -> term * factor .)
+    IF              reduce using rule 25 (term -> term * factor .)
+    ELIF            reduce using rule 25 (term -> term * factor .)
+    WHILE           reduce using rule 25 (term -> term * factor .)
+    FOR             reduce using rule 25 (term -> term * factor .)
+    ELSE            reduce using rule 25 (term -> term * factor .)
+    $end            reduce using rule 25 (term -> term * factor .)
+    }               reduce using rule 25 (term -> term * factor .)
+    )               reduce using rule 25 (term -> term * factor .)
+
+
+state 76
+
+    (26) term -> term / factor .
+
+    *               reduce using rule 26 (term -> term / factor .)
+    /               reduce using rule 26 (term -> term / factor .)
+    +               reduce using rule 26 (term -> term / factor .)
+    -               reduce using rule 26 (term -> term / factor .)
+    VARIABLE        reduce using rule 26 (term -> term / factor .)
+    PRINT           reduce using rule 26 (term -> term / factor .)
+    IF              reduce using rule 26 (term -> term / factor .)
+    ELIF            reduce using rule 26 (term -> term / factor .)
+    WHILE           reduce using rule 26 (term -> term / factor .)
+    FOR             reduce using rule 26 (term -> term / factor .)
+    ELSE            reduce using rule 26 (term -> term / factor .)
+    $end            reduce using rule 26 (term -> term / factor .)
+    }               reduce using rule 26 (term -> term / factor .)
+    )               reduce using rule 26 (term -> term / factor .)
+
+
+state 77
+
+    (32) values -> values , VARIABLE .
+
+    )               reduce using rule 32 (values -> values , VARIABLE .)
+    ,               reduce using rule 32 (values -> values , VARIABLE .)
+
+
+state 78
+
+    (41) if -> IF ( condition ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statements                     shift and go to state 93
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 79
+
+    (35) condition -> VARIABLE > VARIABLE .
+
+    )               reduce using rule 35 (condition -> VARIABLE > VARIABLE .)
+    ;               reduce using rule 35 (condition -> VARIABLE > VARIABLE .)
+
+
+state 80
+
+    (38) condition -> VARIABLE > = . VARIABLE
+
+    VARIABLE        shift and go to state 94
+
+
+state 81
+
+    (36) condition -> VARIABLE < VARIABLE .
+
+    )               reduce using rule 36 (condition -> VARIABLE < VARIABLE .)
+    ;               reduce using rule 36 (condition -> VARIABLE < VARIABLE .)
+
+
+state 82
+
+    (37) condition -> VARIABLE < = . VARIABLE
+
+    VARIABLE        shift and go to state 95
+
+
+state 83
+
+    (15) assignment -> VARIABLE = VARIABLE .
+
+    )               reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+    ;               reduce using rule 15 (assignment -> VARIABLE = VARIABLE .)
+
+
+state 84
+
+    (12) assignment -> VARIABLE = NUMBER .
+
+    )               reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+    ;               reduce using rule 12 (assignment -> VARIABLE = NUMBER .)
+
+
+state 85
+
+    (40) condition -> VARIABLE + + .
+
+    )               reduce using rule 40 (condition -> VARIABLE + + .)
+    ;               reduce using rule 40 (condition -> VARIABLE + + .)
+
+
+state 86
+
+    (42) elif -> ELIF ( condition ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statements                     shift and go to state 96
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 87
+
+    (44) while -> WHILE ( condition ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statements                     shift and go to state 97
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 88
+
+    (45) for -> FOR ( conditions ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statements                     shift and go to state 98
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 89
+
+    (33) conditions -> conditions ; condition .
+
+    )               reduce using rule 33 (conditions -> conditions ; condition .)
+    ;               reduce using rule 33 (conditions -> conditions ; condition .)
+
+
+state 90
+
+    (16) assignment -> VARIABLE = ( expr ) / . / NUMBER
+
+    /               shift and go to state 99
+
+
+state 91
+
+    (18) nums -> nums , NUMBER .
+
+    ]               reduce using rule 18 (nums -> nums , NUMBER .)
+    ,               reduce using rule 18 (nums -> nums , NUMBER .)
+
+
+state 92
+
+    (20) len -> LEN ( VARIABLE ) .
+
+    VARIABLE        reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    PRINT           reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    IF              reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    ELIF            reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    WHILE           reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    FOR             reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    ELSE            reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    $end            reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    }               reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    )               reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+    ;               reduce using rule 20 (len -> LEN ( VARIABLE ) .)
+
+
+state 93
+
+    (41) if -> IF ( condition ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    }               shift and go to state 100
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statement                      shift and go to state 19
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 94
+
+    (38) condition -> VARIABLE > = VARIABLE .
+
+    )               reduce using rule 38 (condition -> VARIABLE > = VARIABLE .)
+    ;               reduce using rule 38 (condition -> VARIABLE > = VARIABLE .)
+
+
+state 95
+
+    (37) condition -> VARIABLE < = VARIABLE .
+
+    )               reduce using rule 37 (condition -> VARIABLE < = VARIABLE .)
+    ;               reduce using rule 37 (condition -> VARIABLE < = VARIABLE .)
+
+
+state 96
+
+    (42) elif -> ELIF ( condition ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    }               shift and go to state 101
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statement                      shift and go to state 19
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 97
+
+    (44) while -> WHILE ( condition ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    }               shift and go to state 102
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statement                      shift and go to state 19
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 98
+
+    (45) for -> FOR ( conditions ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . elif
+    (9) statement -> . while
+    (10) statement -> . for
+    (11) statement -> . else
+    (12) assignment -> . VARIABLE = NUMBER
+    (13) assignment -> . VARIABLE = list
+    (14) assignment -> . VARIABLE = len
+    (15) assignment -> . VARIABLE = VARIABLE
+    (16) assignment -> . VARIABLE = ( expr ) / / NUMBER
+    (21) operation -> . VARIABLE = expr
+    (30) print -> . PRINT ( values )
+    (41) if -> . IF ( condition ) { statements }
+    (42) elif -> . ELIF ( condition ) { statements }
+    (44) while -> . WHILE ( condition ) { statements }
+    (45) for -> . FOR ( conditions ) { statements }
+    (43) else -> . ELSE { BREAK }
+
+    }               shift and go to state 103
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 13
+    IF              shift and go to state 14
+    ELIF            shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    ELSE            shift and go to state 18
+
+    statement                      shift and go to state 19
+    assignment                     shift and go to state 4
+    operation                      shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    elif                           shift and go to state 8
+    while                          shift and go to state 9
+    for                            shift and go to state 10
+    else                           shift and go to state 11
+
+state 99
+
+    (16) assignment -> VARIABLE = ( expr ) / / . NUMBER
+
+    NUMBER          shift and go to state 104
+
+
+state 100
+
+    (41) if -> IF ( condition ) { statements } .
+
+    VARIABLE        reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    PRINT           reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    IF              reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    ELIF            reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    WHILE           reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    FOR             reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    ELSE            reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    $end            reduce using rule 41 (if -> IF ( condition ) { statements } .)
+    }               reduce using rule 41 (if -> IF ( condition ) { statements } .)
+
+
+state 101
+
+    (42) elif -> ELIF ( condition ) { statements } .
+
+    VARIABLE        reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    PRINT           reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    IF              reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    ELIF            reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    WHILE           reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    FOR             reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    ELSE            reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    $end            reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+    }               reduce using rule 42 (elif -> ELIF ( condition ) { statements } .)
+
+
+state 102
+
+    (44) while -> WHILE ( condition ) { statements } .
+
+    VARIABLE        reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    PRINT           reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    IF              reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    ELIF            reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    WHILE           reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    FOR             reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    ELSE            reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    $end            reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+    }               reduce using rule 44 (while -> WHILE ( condition ) { statements } .)
+
+
+state 103
+
+    (45) for -> FOR ( conditions ) { statements } .
+
+    VARIABLE        reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    PRINT           reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    IF              reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    ELIF            reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    WHILE           reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    FOR             reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    ELSE            reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    $end            reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+    }               reduce using rule 45 (for -> FOR ( conditions ) { statements } .)
+
+
+state 104
+
+    (16) assignment -> VARIABLE = ( expr ) / / NUMBER .
+
+    VARIABLE        reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    PRINT           reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    IF              reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    ELIF            reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    WHILE           reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    FOR             reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    ELSE            reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    $end            reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    )               reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    ;               reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+    }               reduce using rule 16 (assignment -> VARIABLE = ( expr ) / / NUMBER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 27 resolved using rule (assignment -> VARIABLE = VARIABLE)
+WARNING: rejected rule (factor -> VARIABLE) in state 27
+WARNING: reduce/reduce conflict in state 28 resolved using rule (assignment -> VARIABLE = NUMBER)
+WARNING: rejected rule (factor -> NUMBER) in state 28

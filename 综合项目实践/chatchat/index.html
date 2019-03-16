@@ -1,0 +1,121 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多人网页聊天</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <a class="navbar-brand" href="/">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+        
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+                    <ul class="navbar-nav mr-auto">
+        
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="如遇在线人数显示不正确，请退出后重新登录"">
+                                    当前在线人数: {{ current_num }} 
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  {% for user_name in user_names %}
+                                    <a class="dropdown-item" href="#">{{ escape(user_name) }}</a>
+                                  {% end %}
+                                </div>
+                        </li>
+
+        
+        
+                    </ul>
+                    
+                    <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">新建聊天室</button>
+                            <button type="submit" class="btn btn-secondary">
+                                    logout <span class="badge badge-light">{{ escape(name) }}</span>
+                            </button>
+                    </form>
+        
+                </div>
+            </nav>
+
+            <br><br><br>
+            
+            {% for item in rooms.items() %}
+            <div class="jumbotron">
+              <h1 class="display-4">聊天室名称: {{ item[0] }}</h1>
+              <p class="lead">描述: {{ item[1]["description"] }}</p>
+              <hr class="my-4">
+              <p>创建者: {{ item[1]["creater"] }}</p>
+              <p>聊天室成员: {% for m in item[1]["members"] %} {{ m }} &nbsp;  {% end %}</p>
+              {% if name not in item[1]["members"] %}
+                <a class="btn btn-warning btn-lg" href="/joinroom?roomname={{item[0]}}" role="button">加入聊天室</a>
+              {% else %}
+                <a class="btn btn-success btn-lg" href="/enterroom?roomname={{item[0]}}" role="button">进入聊天室</a>
+                <a class="btn btn-dark btn-lg" href="/quitroom?roomname={{item[0]}}" role="button">退出聊天室</a>
+              {% end %}
+              {% if name == item[1]["creater"] %}
+                <a class="btn btn-danger btn-lg" href="/deleteroom?roomname={{item[0]}}" role="button">删除聊天室</a>
+              {% end %}
+            </div>
+            {% end %}
+
+      
+
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">添加一个聊天室</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                
+                  <form id="addroomform" action="/addroom" method="post">
+                    <div class="form-group">
+                      <label >聊天室名称</label>
+                      <input type="text" class="form-control" id="roomname"  name="roomname" placeholder="输入聊天室名称">
+                      <small id="emailHelp" class="form-text text-muted">请使用唯一的名称，和别的聊天室重名将会覆盖</small>
+                    </div>
+                    <div class="form-group">
+                      <label>描述</label>
+                      <input type="text" class="form-control" id="description" name="description" placeholder="输入聊天室描述">
+                     </div>
+                  </form>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="document.getElementById('addroomform').submit();">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

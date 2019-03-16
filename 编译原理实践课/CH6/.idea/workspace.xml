@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c06b19e-c670-4439-9b6e-323942f0e668" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Calclex.py" beforeDir="false" afterPath="$PROJECT_DIR$/Calclex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch6.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.out" beforeDir="false" afterPath="$PROJECT_DIR$/parser.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parsetab.py" beforeDir="false" afterPath="$PROJECT_DIR$/parsetab.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CH11/CH11.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CH11/example.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CH7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CH7/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CH8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CH8/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,10 +61,11 @@
     <session id="687683746">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.34" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -79,14 +81,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="out" value="3" />
-          <entry key="py" value="8" />
+          <entry key="py" value="9" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="8" />
+          <entry key="Python" value="9" />
         </counts>
       </usages-collector>
     </session>
@@ -99,12 +101,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ch6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="-1781">
               <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
-                <element signature="e#78#108#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Calclex.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="571">
+              <caret line="78" column="4" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -112,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example_E6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="135" column="21" lean-forward="true" selection-start-line="75" selection-end-line="135" selection-end-column="21" />
+            <state relative-caret-position="2044">
+              <caret line="135" column="21" selection-start-line="75" selection-end-line="135" selection-end-column="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#134#153#0" />
@@ -124,9 +134,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.out">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1428" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -346,11 +354,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5005562" side_tool="true" weight="0.15201466" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49944383" visible="true" weight="0.15384616" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49944383" visible="true" weight="0.15548456" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
@@ -360,7 +368,7 @@
       <window_info anchor="bottom" id="Python Console" order="5" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.29032257" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.29032257" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.39933258" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -432,18 +440,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parser.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1428" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Calclex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prog.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -453,8 +449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example_E6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="135" column="21" lean-forward="true" selection-start-line="75" selection-end-line="135" selection-end-column="21" />
+        <state relative-caret-position="2044">
+          <caret line="135" column="21" selection-start-line="75" selection-end-line="135" selection-end-column="21" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#134#153#0" />
@@ -462,13 +458,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/parser.out">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Calclex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="78" column="4" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ch6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
+        <state relative-caret-position="-1781">
           <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-            <element signature="e#78#108#0" />
           </folding>
         </state>
       </provider>
