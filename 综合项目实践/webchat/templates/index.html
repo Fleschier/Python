@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- <title>多人在线聊天</title>
+ <title>Online Chatting</title>
 
   <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <div style=" padding-bottom: 20px;">
       <ul>
         <li>
-          <h3> 当前在线人数: {{currentNum}}</h3>
+          <h3> current Online: {{currentNum}}</h3>
           <div>
             {% for user_name in userNames %}
             <h3>{{escape(user_name)}}</h3>
@@ -36,33 +36,32 @@
     <form class="form-inline my-2 my-lg-0" style="padding-bottom:30px" action="/logout" method="post">
       <!-- 创建聊天室 -->
       <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-        新建聊天室
+        Create Room
       </button>
       <!-- 登出 -->
       <button type="submit" class="btn btn-lg btn-primary">
-              logout ( UserID: {{ escape(name) }} )
+        Logout ( UserID: {{ escape(name) }} )
       </button>
     </form>
   
     <!-- 所有聊天室 -->
     {% for item in currentRooms.items() %}
     <div class="jumbotron" style="width:60%; padding-left: 20px; border-radius: 20px;">
-      <h2 class="display-4"><strong>聊天室名称: {{ item[0] }}</strong></h2>
-      <p class="lead">描述: {{ item[1]["description"] }}</p>
+      <h2 class="display-4"><strong>Room Name: {{ item[0] }}</strong></h2>
+      <p class="lead">Description: {{ item[1]["description"] }}</p>
       <hr class="my-4">
-      <p>创建者: {{ item[1]["creater"] }}</p>
-      <p>聊天室成员: {% for m in item[1]["members"] %} {{ m }} &nbsp;  {% end %}</p>
-      {% if name not in item[1]["members"] %}
-        <a class="btn btn-lg btn-primary" href="/rooms?roomName={{item[0]}}" role="button">加入聊天室</a>
+      <p>Creater: {{ item[1]["creater"] }}</p>
+      <p>Members: {% for m in item[1]["members"] %} {{ m }} &nbsp; {% end %}</p>
+      <!-- {% if name not in item[1]["members"] %} -->
+        <a class="btn btn-lg btn-primary" href="/rooms?roomName={{item[0]}}&userName={{name}}" role="button">Join Room</a>
 
        
-      {% else %}
-        <a class="btn btn-lg btn-primary" href="/rooms?roomName={{item[0]}}" role="button">进入聊天室</a>
+      <!-- {% else %}
+        <a class="btn btn-lg btn-primary" href="/rooms?roomName={{item[0]}}" role="button">Join Room</a>
         
-        <a class="btn btn-lg btn-primary" href="/quitroom?roomName={{item[0]}}" role="button">退出聊天室</a>
-      {% end %}
+      {% end %} -->
       {% if name == item[1]["creater"] %}
-        <a class="btn btn-danger btn-lg" href="/deleteroom?roomName={{item[0]}}" role="button">删除聊天室</a>
+        <a class="btn btn-danger btn-lg" href="/deleteroom?roomName={{item[0]}}" role="button">Delete Room</a>
       {% end %}
     </div>
     {% end %}
@@ -72,7 +71,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">添加一个聊天室</h5>
+              <h5 class="modal-title">Create Room</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -82,13 +81,13 @@
             
               <form id="createRoomForm" action="/createroom" method="post">
                 <div class="form-group">
-                  <label >聊天室名称</label>
-                  <input type="text" class="form-control" id="roomName"  name="roomName" placeholder="输入聊天室名称">
+                  <label >Room Name</label>
+                  <input type="text" class="form-control" id="roomName"  name="roomName" placeholder="Enter room name">
                   <!-- <small id="emailHelp" class="form-text text-muted">请使用唯一的名称，和别的聊天室重名将会覆盖</small> -->
                 </div>
                 <div class="form-group">
-                  <label>描述</label>
-                  <input type="text" class="form-control" id="description" name="description" placeholder="输入聊天室描述">
+                  <label>Description</label>
+                  <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
                  </div>
               </form>
 

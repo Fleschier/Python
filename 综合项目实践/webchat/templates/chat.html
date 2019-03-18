@@ -10,6 +10,13 @@
   </head>
 
   <body style="padding-top:100px" class="main-body" >
+
+    <div style="display:inline-block"> <h4> Current Room:&nbsp;</h4></div>
+    <div id="parameter_room" style="display:inline-block">{{roomName}}</div>
+    <br>
+    <div style="display:inline-block"> <h4> Current User:&nbsp;</h4></div>
+    <div id="parameter_user" style="display:inline-block">{{userName}}</div>
+
     <header class="navbar navbar-default navbar-fixed-top bs-docs-nav" role="banner">
       <div class="container">
         <div class="navbar-header">
@@ -18,17 +25,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h3 class="navbar-brand "><strong>WebChat Room</strong></h3>
+          <a href="/quitroom?roomName={{roomName}}" class="navbar-brand "><strong>WebChat HomePage</strong></a>
         </div>
-        <!-- <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
           <ul class="nav nav-pills navbar-right">
             <li>
-              <a href="#">About</a>
+              <a href="/quitroom?roomName={{roomName}}&userName={{userName}}">Quit ChatRoom</a>
             </li>
-            <li id="showusername">
-            </li>
+            <!-- <li id="showusername">
+            </li> -->
           </ul>
-        </nav> -->
+        </nav>
       </div>
     </header>
     <!-- end_header -->
@@ -49,7 +56,7 @@
             <div class="input-group col-lg-12 "  style="padding-top:20px;">
               <input type="text" id="message" class="form-control" placeholder="Your message">
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="button" onclick="sendMessage()">发送</button>
+                <button class="btn btn-primary" type="button" onclick="sendMessage()">Send</button>
               </span>
             </div><!-- /input-group -->
             </div>
@@ -60,9 +67,7 @@
         </div><!-- end row -->
       </div><!-- /.container -->
 
-      <div id="parameter_room" style="display:block">{{roomName}}</div>
-      <div> <h4> 当前用户: </h4></div>
-      <div id="parameter_user" style="display:block">{{userName}}</div>
+ 
 
 
       <!-- 养成好习惯,将脚本引入放在最后,否则有时候通过id获取的时候会因为文档没有加载而失败 -->

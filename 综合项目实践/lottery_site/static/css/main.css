@@ -1,4 +1,12 @@
 
+@font-face {
+    font-family: 'fontnameRegular';
+    src: url('../fonts/fontname.ttf');
+} 
+* {
+    font-family: fontnameRegular !important;
+    font-weight: bold !important;
+}
 .head{
     font-family: 'Courier New', Courier, monospace;
     font-size: 20;

@@ -91,24 +91,14 @@ class CreateRoomHandler(BaseHandler):
         self.redirect("/")
         return 
 
-class EnterRoomHandler(BaseHandler):
-    @tornado.web.authenticated
-    def get(self):
-        roomName = self.get_argument("roomName")
-        current_user = tornado.escape.xhtml_escape(self.current_user)
-
-        if current_user not in record["rooms"][roomName]["members"]:    #新进成员加入计数
-            record["rooms"][roomName]["members"].add(current_user)
-
-        self.redirect("/")
-
 class QuitRoomHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         roomName = self.get_argument("roomName")
-        current_user = tornado.escape.xhtml_escape(self.current_user)
-        if current_user in record["rooms"][roomName]["members"]:
-            record["rooms"][roomName]["members"].remove(current_user)
+        #currentUser = tornado.escape.xhtml_escape(self.current_user)
+        currentUser = self.get_argument("userName")
+        if currentUser in record["rooms"][roomName]["members"]:
+            record["rooms"][roomName]["members"].remove(currentUser)
 
         self.redirect("/")
         return
@@ -128,27 +118,40 @@ class DeleteRoomHandler(BaseHandler):
 
 class JumpHandler(BaseHandler):
     def get(self):
-        currentUser = tornado.escape.xhtml_escape(self.current_user)
-        userNums = len(record["clients_hst"]["clients"])
-        userNames = record["clients_hst"]["clients"]
+        # currentUser = tornado.escape.xhtml_escape(self.current_user)
+        currentUser = self.get_argument("userName")
+        # userNums = len(record["clients_hst"]["clients"])
+        # userNames = record["clients_hst"]["clients"]
         currentRoomName = self.get_argument("roomName")    #更新当前房间名称
-        
+
+        if currentUser not in record["rooms"][currentRoomName]["members"]:    #新进成员加入计数
+            record["rooms"][currentRoomName]["members"].add(currentUser)
+
         #记录当前房间的名称
         self.set_secure_cookie("currentRoomName", currentRoomName)
 
         self.render("chat.html", userName=currentUser, roomName=currentRoomName)
         
 
-def updatelist():
-    total = len(record["clients_hst"]["handlers"])
-    userlist = []
-    for c in record["clients_hst"]["handlers"]:
-        userlist.append(c.userName)
-        # pass
+def updatelist(roomName):
+    # total = len(record["clients_hst"]["handlers"])
+    # userlist = []
+    # for c in record["clients_hst"]["handlers"]:
+    #     userlist.append(c.userName)
+    #     # pass
+    # msg = {
+    # 'type': 'list',
+    # 'total': total,
+    # 'userlist': userlist,
+    # }
+    # return msg
+
+    total = len(record["rooms"][roomName]["members"])
+    userList = list(record["rooms"][roomName]["members"])
     msg = {
-    'type': 'list',
-    'total': total,
-    'userlist': userlist,
+        'type': 'list',
+        'total': total,
+        'userlist': userList,
     }
     return msg
 
@@ -173,7 +176,7 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
             'userName': 'SYSTEM',
             'message': userName + ' has joined the room (System Message)',
             })
-        self.sendToAllInside(updatelist())
+        self.sendToAllInside(updatelist(self.currentRoomName))
 
     def sendToAllInside(self, message):     # 参数为dict格式
         for client in record["clients_hst"]["handlers"]:
@@ -191,13 +194,14 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
         self.currentRoomName = bytes.decode(self.get_secure_cookie("currentRoomName"))    #更新当前房间名称
 
     def on_close(self):
-        record["rooms"][self.currentRoomName]["members"].remove(self.userName)
+        # record["rooms"][self.currentRoomName]["members"].remove(self.userName)
+        record["clients_hst"]["handlers"].remove(self)
         self.sendToAllInside({
             'type': 'sys',
             'userName': 'SYSTEM',
             'message': self.userName + ' has left the room'
             })
-        self.sendToAllInside(updatelist())
+        self.sendToAllInside(updatelist(self.currentRoomName))
 
     def on_message(self, message):
         msg = json.loads(message)
@@ -209,6 +213,8 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
                 roomMembers.add(self.userName)
                 self.reg(msg["userName"])
             for client in record["clients_hst"]["handlers"]:
+                print("\n\n",client.userName)
+                print(record["rooms"][self.currentRoomName]["members"],"\n\n\n")
                 if client.userName in record["rooms"][self.currentRoomName]["members"]:
                     client.write_message(message)
         else:
@@ -234,7 +240,6 @@ url = [
     (r'/login', LoginHandler),
     (r'/logout', LogOutHandler),
     (r'/createroom', CreateRoomHandler),
-    (r'/enterroom', EnterRoomHandler),
     (r'/quitroom', QuitRoomHandler),
     (r'/deleteroom', DeleteRoomHandler),
     (r'/rooms', JumpHandler),

@@ -1,9 +1,6 @@
-
-// var d = document;
 var userName;
 var roomName;
 
-// var uid;
 var ws = new WebSocket("ws://127.0.0.1:8888/chat");
 
 $(window).onload = init();
@@ -16,7 +13,6 @@ function init() {
   userName = document.getElementById("parameter_user").innerHTML;
   roomName = document.getElementById("parameter_room").innerHTML;
 
-  //document.getElementById("showuserName").innerHTML = '<a href="javascript:;" onclick="logout()">Logout</a>';
   var messageContainer = document.getElementById("chatbox");
   var userListContainer = document.getElementById("userlist");
   if("WebSocket" in window) {
@@ -79,7 +75,7 @@ function createUserlist(total, userlist){
 
   var dom_num = document.createElement("span");
   dom_num.setAttribute("class","chat_userName"); 
-  dom_num.innerHTML = '在线人数(' + total +')';
+  dom_num.innerHTML = '当前房间人数(' + total +')';
   entry.appendChild(dom_num);
 
   var dom_ul = document.createElement("ul");
@@ -100,30 +96,6 @@ function scrollToBottom(){
   //清除消息框
   document.getElementById("message").value="";
 }
-
-//产生uid
-// function genUid(){
-//   var uid = "";
-//   for(var i=0;i<4;i++)
-//     uid+=Math.floor(Math.random()*10);
-//   return uid
-//   }
-
-// function userNameSubmit(){
-//   uid = genUid()
-//   userName = document.getElementById("userName").value;
-//   if(userName != ""){
-//     document.getElementById("userName").value = '';
-//     document.getElementById("loginbox").style.display = 'none';
-//     document.getElementById("chatlog").style.display = 'block';
-//     this.init(userName);
-//   }
-//   return false;
-// }
-
-
-
-
 
 function openWS(messageContainer, userListContainer) {
   
